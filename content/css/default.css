@@ -1286,7 +1286,7 @@ html {
 body {
     margin: 0
     padding: 15px;
-    color: #eae2dc;
+    background-color: #eae2dc;
 }
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
