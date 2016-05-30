@@ -1280,11 +1280,12 @@ button.close {
 
 html {
     -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
+    background-color: #eae2dc;
 }
 
 body {
-    margin: 0
+    margin: 0;
     padding: 15px;
     background-color: #eae2dc;
 }
@@ -1621,7 +1622,7 @@ img {
 }
 
 .box {
-    border: 1px #666;
+    border: 1px solid #666;
 }
 
 .g {
