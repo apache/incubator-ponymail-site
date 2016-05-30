@@ -1281,13 +1281,16 @@ button.close {
 html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    background-color: #eae2dc;
+    background: #FFF;
 }
 
 body {
-    margin: 0;
-    padding: 15px;
-    background-color: #eae2dc;
+    background: #eae2dc;
+    max-width: 900px;
+    margin: 0px auto;
+    padding: 10px;
+    border-left: 2px solid #666;
+    border-right: 2px solid #666;
 }
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
@@ -1488,13 +1491,11 @@ table {
 
 html {
     font-size: .875em;
-    background: #fff;
     color: #373D49
 }
 
 html,body {
     font-family: Georgia,Cambria,serif;
-    height: 100%
 }
 
 body {
@@ -1607,7 +1608,7 @@ h6 {
 
 a {
     cursor: pointer;
-    color: #35D7BB;
+    color: #D5377B;
     text-decoration: none
 }
 
