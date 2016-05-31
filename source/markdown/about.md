@@ -1,3 +1,5 @@
+# About Pony Mail and its Contributors
+
 We're a small bunch of people committed to making mailing list interaction as easy as possible.<br/>
  Currently, we consist of (in alphabetical order):<br/>
  <ul>
