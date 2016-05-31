@@ -4514,7 +4514,7 @@ img {
 #menubar i {
     clear: right;
     display: block;
-    max-height: 14px;
+    max-height: 16px;
 }
 #menubar i:after {
     content:"\a";
