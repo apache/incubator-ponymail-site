@@ -1,5 +1,5 @@
 
-### Contributing to Pony Mail ###
+# Contributing to Pony Mail #
 We'd LOVE if more people would contribute to Pony Mail!
 Any form of contribution is most welcome, whether it be programming,
 documentation, evangelism, marketing, or helping out other users.
@@ -14,7 +14,7 @@ To contribute to Pony Mail, follow these steps:
 - Let us know what you want to do, and we'll add you to our contributors list!
 - Join us on #ponymail on the Freenode IRC network
 
-### Git Workflow
+## Git Workflow
 The following workflow is adapted from the [jClouds workflow](https://cwiki.apache.org/confluence/display/JCLOUDS/Git+workflow):
 
 #### Prepare your fork
