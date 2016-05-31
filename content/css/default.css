@@ -1281,7 +1281,7 @@ button.close {
 html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    background: #FFF;
+    background: #333;
 }
 
 body {
@@ -1289,8 +1289,8 @@ body {
     max-width: 900px;
     margin: 0px auto;
     padding: 10px;
-    border-left: 2px solid #666;
-    border-right: 2px solid #666;
+    border-left: 4px solid #666;
+    border-right: 4px solid #666;
 }
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
