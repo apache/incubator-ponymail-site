@@ -1,0 +1,8 @@
+# Building the web site
+
+* Install the markdown module for Python 3: sudo pip3 install markdown
+* Edit or create the appropriate markdown file in source/ (you can have sub-dirs there)
+* open a shell, go to the source/ dir
+* Run: python3 generate.py
+* Commit the changes to git :)
+
