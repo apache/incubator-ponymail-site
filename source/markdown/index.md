@@ -1,6 +1,5 @@
-# Pony Mail
 <img src="images/ponymail.svg" style="width: 200px; margin-right: 20px; height: auto;" align="left"/><br/><br/>
-Pony Mail is a web-based mail archive browser
+Apache Pony Mail (Incubating) is a web-based mail archive browser
 licensed under the Apache License v/2.0 and built to scale 
 to millions of archived messages with hundreds of requests 
 per second.
