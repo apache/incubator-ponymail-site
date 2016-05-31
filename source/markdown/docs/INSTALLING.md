@@ -4,10 +4,10 @@
 If your distro is on this list, please refer to that specific document
 for detailed package installation instructions:
 
-- [Debian (Jessie) Installation Instructions](INSTALL.debian.md)
-- [Ubuntu (14.04) Installation Instructions](INSTALL.ubuntu.md)
-- [CentOS (7.1) Installation Instructions](INSTALL.centos.md)
-- [Fedora (22) Installation Instructions](INSTALL.fedora.md)
+- [Debian (Jessie) Installation Instructions](install.debian.html)
+- [Ubuntu (14.04) Installation Instructions](install.ubuntu.html)
+- [CentOS (7.1) Installation Instructions](install.centos.html)
+- [Fedora (22) Installation Instructions](install.fedora.html)
 
 Otherwise, read the next two chapters:
 
@@ -85,7 +85,7 @@ If you are using MailMan 3, you can add archiver.py as an archive by following t
 ```
 
 For older mailing list systems such as Mailman 2 and ezmlm, you can also
-tak a look at our [archiving examples](ARCHIVING.md) page for pointers.
+tak a look at our [archiving examples](archiving.html) page for pointers.
 
 ## Public versus private lists ##
 In MailMan 3, this should be auto-detected and is not a concern.
@@ -97,7 +97,7 @@ the --private arg to the python script to mark an email as private:
 ```
 
 ## Importing old data into Pony Mail
-See [this guide](IMPORTING.md) for details on how to import old archives into Pony Mail.
+See [this guide](importing.html) for details on how to import old archives into Pony Mail.
 
 ## Bulk editing lists ##
 You can use `edit-list.py` to perform bulk operations:

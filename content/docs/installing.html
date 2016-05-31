@@ -37,10 +37,10 @@
 <p>If your distro is on this list, please refer to that specific document
 for detailed package installation instructions:</p>
 <ul>
-<li><a href="INSTALL.debian.md">Debian (Jessie) Installation Instructions</a></li>
-<li><a href="INSTALL.ubuntu.md">Ubuntu (14.04) Installation Instructions</a></li>
-<li><a href="INSTALL.centos.md">CentOS (7.1) Installation Instructions</a></li>
-<li><a href="INSTALL.fedora.md">Fedora (22) Installation Instructions</a></li>
+<li><a href="install.debian.html">Debian (Jessie) Installation Instructions</a></li>
+<li><a href="install.ubuntu.html">Ubuntu (14.04) Installation Instructions</a></li>
+<li><a href="install.centos.html">CentOS (7.1) Installation Instructions</a></li>
+<li><a href="install.fedora.html">Fedora (22) Installation Instructions</a></li>
 </ul>
 <p>Otherwise, read the next two chapters:</p>
 <h2>Pre-requisites</h2>
@@ -104,7 +104,7 @@ header determines the list ID using the --altheader argument, for instance:
   class: mailman_ponymail.Archiver
   enable: yes</code></p>
 <p>For older mailing list systems such as Mailman 2 and ezmlm, you can also
-tak a look at our <a href="ARCHIVING.md">archiving examples</a> page for pointers.</p>
+tak a look at our <a href="archiving.html">archiving examples</a> page for pointers.</p>
 <h2>Public versus private lists</h2>
 <p>In MailMan 3, this should be auto-detected and is not a concern.
 When using other ML systems via piping to STDIN, you should add
@@ -112,7 +112,7 @@ the --private arg to the python script to mark an email as private:
 <code>foolist-private: "|/usr/bin/python3 /path/to/tools/archiver.py --private"
     foolist-public: "|/usr/bin/python3 /path/to/tools/archiver.py"</code></p>
 <h2>Importing old data into Pony Mail</h2>
-<p>See <a href="IMPORTING.md">this guide</a> for details on how to import old archives into Pony Mail.</p>
+<p>See <a href="importing.html">this guide</a> for details on how to import old archives into Pony Mail.</p>
 <h2>Bulk editing lists</h2>
 <p>You can use <code>edit-list.py</code> to perform bulk operations:
 - Rename lists
