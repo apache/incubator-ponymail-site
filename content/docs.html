@@ -33,73 +33,24 @@
         </ul>
     </div>
 </div>
-<h1>Pony Mail</h1>
-<p><img src="images/ponymail.svg" style="width: 200px; margin-right: 20px; height: auto;" align="left"/><br/><br/>
-Pony Mail is a web-based mail archive browser
-licensed under the Apache License v/2.0 and built to scale 
-to millions of archived messages with hundreds of requests 
-per second.</p>
-<p>Pony Mail allows you to browse and interact with mailing lists 
-using Mozilla Persona or OAuth2 (Google, GitHub, Facebook etc) for authentication.</p>
-<p><img alt="Ponies" src="images/demo.png" /></p>
-<p><img alt="Trends" src="images/demo_trends.png" /></p>
-<p><img alt="N-grams" src="images/demo_ngrams.png" /></p>
-<p>See <a href="https://lists.apache.org">https://lists.apache.org.org</a> for a demo.</p>
-<p>Pony Mail works in both public, private and mixed-mode, allowing you 
-to have one unified place for all your communication, both public and 
-private.</p>
-<h3>Features include:</h3>
-<ul>
-<li>Importing from standard mbox files, maildir directory, Pipermail or an mod_mbox-driven site</li>
-<li>Public and private list viewing based on auth</li>
-<li>Cross-list threading</li>
-<li>OpenSearch support for browsers (can add as search engine)</li>
-<li>In-browser reply to mailing lists</li>
-<li>Fast and intuitive searching</li>
-<li>Threaded, flat and tree view modes</li>
-<li>Notifications of replies to emails sent via Pony Mail</li>
-<li>Email and list statistics</li>
-<li>Multi-site, multi-list handling</li>
-<li>Word clouds</li>
-<li>Fuzzy-logic email grouping/threading (based in part on JWZ's ideas)</li>
-<li>Supports both custom OAuth, Google Auth, OAuth.online and Mozilla Persona</li>
-<li>Atom feeds for all lists (including private ones!)</li>
-<li>Source view and custom range mbox export</li>
-<li>Customized trend analysis and n-grams</li>
-</ul>
-<h3>Requirements:</h3>
-<ul>
-<li>Linux operating system (tested on Ubuntu, Debian, Fedora and CentOS - Windows or OS/X may work)</li>
-<li>ElasticSearch backend</li>
-<li>Apache HTTP Server frontend with mod_lua loaded OR</li>
-<li>Nginx with nginx-extras (ng-lua module) AND lua-apr installed</li>
-<li>Python 3.x for importing (with elasticsearch and formatflowed via pip)</li>
-<li>A mailing list system:</li>
-<li>MailMan3 if you fancy that (we have a python3 archive plugin)</li>
-<li>OR any mailing list system of your choice (use archiver plugin with stdin)</li>
-<li>Lua &gt;=5.1 + lua-cjson, luasec and luasocket</li>
-</ul>
-<h3>Development Benchmarking</h3>
-<p>Pony Mail has been built for and tested with the mail archives of the Apache
-Software Foundation, which span more than 15 million emails sent across more
-than 20 years. To put things into perspective, importing all this on a modern
-machine (2xSSD with 64GB RAM) took around 12 hours and resulted in a performance
-at around 100 archive search requests per second per ES node, depending on mailing
-list size and available bandwidth.</p>
-<h3>TODO:</h3>
-<p>This is a list of what we would love to get done:
-<em> ~~Set up dir structure~~ (</em>DONE<em>)
-</em> ~~Import site data~~ (<em>DONE</em>)
-<em> ~~Import tools~~ (</em>DONE<em>)
-</em> ~~Import settings / setup tools~~ (<em>DONE</em>)
-<em> ~~Import, fix archiver~~ (</em>DONE<em>)
-</em> ~~Add license headers (ALv2) to everything~~ (<em>DONE(?)</em>)
-<em> ~~Have reply feature actually work~~ (</em>DONE<em>)
-</em> ~~Split JS into smaller files for development, bundle together for releases~~ (<em>DONE</em>)
-<em> Start on documentation (WIP)
-</em> Rework JS, turn those ugly innerHTML hacks into proper DOM handling
-<em> Set up notification system (depends on reply system) (works, but still </em>WIP!<em>)
-</em> Have it work with ES with auth mode or via HTTPS</p>
+<h3>Getting started</h3>
+<p>(Optionally see the <a href="docs/INSTALLING.md">detailed installation instructions</a> for more information)</p>
+<h4>Supported Linux Distributions</h4>
+<p>For a quick guide to installing Pony Mail, please see the guides for:
+- <a href="docs/INSTALL.debian.md">Debian (Jessie) Installation Instructions</a>
+- <a href="docs/INSTALL.ubuntu.md">Ubuntu (14.04) Installation Instructions</a>
+- <a href="docs/INSTALL.centos.md">CentOS (7.1) Installation Instructions</a>
+- <a href="docs/INSTALL.fedora.md">Fedora (22) Installation Instructions</a></p>
+<h4>Generic installation instructions</h4>
+<ol>
+<li>Install Apache httpd + mod_lua and the lua libs (see http://modlua.org/gs/installing if need be)</li>
+<li>Install ElasticSearch</li>
+<li>go to tools/ and run python setup.py - follow the instructions and enter info</li>
+<li>Fiddle a bit with site/js/config.js for now</li>
+<li>Add Pony Mail as an archiver for your lists. <a href="docs/ARCHIVING.md">see this doc</a>.</li>
+<li>import mbox data with import-mbox.py if need be (see <a href="docs/IMPORTING.md">this doc</a> for details)</li>
+<li>All done :) But please see the <a href="docs/INSTALLING.md">detailed installation instructions</a> for more details</li>
+</ol>
 <h2><a id="disclaimer"></a>Disclaimer</h2>
 <p>
     <a href="https://incubator.apache.org"><img src="images/podling.svg" align="right" width="220px"/></a>
