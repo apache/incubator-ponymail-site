@@ -86,15 +86,21 @@ for the reviewer to focus only in the last changes without having to go
 again through the entire pull request. Once the PR is ready to be
 merged, you'll be asked to squash the commits. Preparing the pull
 request to be merged</p>
-<p>First squash the commits, to have a cleaner rebase (it is easier to rebase having one single commit than having N commits):
-<code>git rebase -i HEAD~N     # Where N is the number of commits in the pull request</code></p>
+<p>First squash the commits, to have a cleaner rebase (it is easier to rebase having one single commit than having N commits):</p>
+<pre>
+git rebase -i HEAD~N     # Where N is the number of commits in the pull request
+</pre>
+
 <p>Now that there is only one commit, update the branch to the latest version of master:
 <pre>
 git fetch ponymail
 git rebase ponymail/master
 </pre></p>
-<p>At this point the local branch with one single commit on top of the latest master and it can be pushed to your fork:</p>
-<p><code>git push &lt;your-fork's-remote&gt; feature-branch -f   # You might need to push with --force because of the rebase to the latest master</code></p>
+<p>At this point the local branch with one single commit on top of the latest master and it can be pushed to your fork:
+<pre>
+git push <your-fork's-remote> feature-branch -f # You might need to push with --force
+                                                # because of the rebase to the latest master
+</pre></p>
 <p>Now the pull request will be clean with one single commit and up to date
 with the latest master. Ready to be merged!</p>
 <h4>A note about keeping the pull request up to date</h4>

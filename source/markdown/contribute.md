@@ -53,7 +53,10 @@ merged, you'll be asked to squash the commits. Preparing the pull
 request to be merged
 
 First squash the commits, to have a cleaner rebase (it is easier to rebase having one single commit than having N commits):
-`git rebase -i HEAD~N     # Where N is the number of commits in the pull request`
+
+~~~
+git rebase -i HEAD~N     # Where N is the number of commits in the pull request
+~~~
 
 Now that there is only one commit, update the branch to the latest version of master:
 ~~~
@@ -62,8 +65,10 @@ git rebase ponymail/master
 ~~~
 
 At this point the local branch with one single commit on top of the latest master and it can be pushed to your fork:
-
-`git push <your-fork's-remote> feature-branch -f   # You might need to push with --force because of the rebase to the latest master`
+~~~
+git push <your-fork's-remote> feature-branch -f # You might need to push with --force
+                                                # because of the rebase to the latest master
+~~~
 
 Now the pull request will be clean with one single commit and up to date
 with the latest master. Ready to be merged!
