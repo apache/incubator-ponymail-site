@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ffffff">
 </head><body>
 <div style="margin: -10px; background: #7e614a; color: #EEE; margin-bottom: 20px; text-align: center;">
-    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="images/devme.png" alt="Fork/Download Pony Mail"></a>
+    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="/images/devme.png" alt="Fork/Download Pony Mail"></a>
     <h1><a id="Pony_Mail_0"></a>Apache Pony Mail (Incubating)</h1>
     <div id="menubar" style="font-size: 20pt; background: #5e514a; padding-top: 5px;">
         <ul>
@@ -53,11 +53,12 @@ Python 3 and the helper libraries installed
 <h3>Create an alias:</h3>
 <p>Set up a mail alias for public and private lists in <code>/etc/aliases</code> or similar method,
 and point them at the archiver script in tools/:</p>
-<p>~~~</p>
-<h1>You may need to add "--altheader delivered-to" to these commands, it varies</h1>
-<p>foo-public: "|/usr/bin/python3 /path/to/tools/archiver.py"
+<pre>
+# You may need to add "--altheader delivered-to" to these commands, it varies
+foo-public: "|/usr/bin/python3 /path/to/tools/archiver.py"
 foo-private: "|/usr/bin/python3 /path/to/tools/archiver.py --private"
-~~~</p>
+</pre>
+
 <p>Once done, run <code>newaliases</code> to update your alias DB.</p>
 <h3>Subscribe the aliases to your mailing lists</h3>
 <p>Use the mailman UI or CLI to subscribe foo-public@ to your public lists and
@@ -67,12 +68,14 @@ are hidden by default till the correct AAA scripting is set up.</p>
 <p>First, see the general introduction in the MM2 example, as this applies here as well.</p>
 <h3>Create an alias:</h3>
 <p>Set up a dot-forward file for a public and a private alias:</p>
-<p>~~~
+<pre>
 .qmail-archive-public:
-    "|/usr/bin/python3 /path/to/tools/archiver.py"</p>
-<p>.qmail-archive-private:
+    "|/usr/bin/python3 /path/to/tools/archiver.py"
+
+.qmail-archive-private:
     "|/usr/bin/python3 /path/to/tools/archiver.py --private"
-~~~</p>
+</pre>
+
 <h3>Subscribe the aliases to your mailing lists</h3>
 <p>Use the ezmlm CLI to subscribe your new aliases to the lists:
 <code>ezmlm-sub foolist/ archive-public@yourhost.tld</code>
@@ -93,20 +96,20 @@ is installed beforehand.</p>
 <p>If you need to rewrite list IDs on the fly as emails come in, you can use the debug.cropout 
 setting for this (in <code>ponymail.cfg</code>). </p>
 <p>You can either use it to just crop away something:
-~~~
+<pre>
  [debug]
   # Remove 'foo' from all list IDs
   cropout:  foo
-~~~</p>
+</pre></p>
 <p>Or you can use it as a regex substitution:
-~~~
+<pre>
  [debug]
   #Replace '<em>.bar.tld' with '</em>.blorg.bar.tld'
   cropout:  &lt;([a-z]+).bar.tld&gt; &lt;\1.blorg.bar.tld&gt;
-~~~</p>
+</pre></p>
 <h2><a id="disclaimer"></a>Disclaimer</h2>
 <p style="font-size: 8pt; line-height: 12pt;">
-    <a href="https://incubator.apache.org"><img src="images/podling.svg" align="right" width="220px"/></a>
+    <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px"/></a>
     Apache Pony Mail (Incubating) is an effort undergoing incubation at
     The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
     Apache Incubator</a>. Incubation is required of all newly accepted projects

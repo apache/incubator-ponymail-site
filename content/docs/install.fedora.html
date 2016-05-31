@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ffffff">
 </head><body>
 <div style="margin: -10px; background: #7e614a; color: #EEE; margin-bottom: 20px; text-align: center;">
-    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="images/devme.png" alt="Fork/Download Pony Mail"></a>
+    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="/images/devme.png" alt="Fork/Download Pony Mail"></a>
     <h1><a id="Pony_Mail_0"></a>Apache Pony Mail (Incubating)</h1>
     <div id="menubar" style="font-size: 20pt; background: #5e514a; padding-top: 5px;">
         <ul>
@@ -44,55 +44,61 @@
 <li>python 3</li>
 <li>luarocks</li>
 </ul>
-<p>~~~
+<pre>
 sudo dnf install -y httpd git lua lua-sec lua-socket python3 luarocks
-~~~</p>
+</pre>
+
 <p>Install the missing cjson package via luarocks:</p>
-<p>~~~
+<pre>
 sudo luarocks-5.3 install lua-cjson
-~~~</p>
+</pre>
+
 <p>Install the required Python 3 modules:
-~~~
+<pre>
 sudo pip3.4 install elasticsearch formatflowed chardet netaddr
-~~~</p>
+</pre></p>
 <p>Install ElasticSearch:</p>
-<p>~~~
+<pre>
 sudo dnf install -y java-1.8.0-openjdk-headless
-sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch</p>
-<pre><code>(The following is taken from the ElasticSearch online guide:)
+sudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch
 
-Add the following in your /etc/yum.repos.d/ directory in a file with a .repo suffix,
-for example elasticsearch.repo:
+    (The following is taken from the ElasticSearch online guide:)
 
-[elasticsearch-1.7]
-name=Elasticsearch repository for 1.7.x packages
-baseurl=http://packages.elastic.co/elasticsearch/1.7/centos
-gpgcheck=1
-gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch
-enabled=1
-</code></pre>
-<p>sudo dnf install -y elasticsearch
-~~~</p>
+    Add the following in your /etc/yum.repos.d/ directory in a file with a .repo suffix,
+    for example elasticsearch.repo:
+
+    [elasticsearch-1.7]
+    name=Elasticsearch repository for 1.7.x packages
+    baseurl=http://packages.elastic.co/elasticsearch/1.7/centos
+    gpgcheck=1
+    gpgkey=http://packages.elastic.co/GPG-KEY-elasticsearch
+    enabled=1
+
+
+sudo dnf install -y elasticsearch
+</pre>
+
 <p>Configure and start up ElasticSearch:</p>
-<p>~~~
+<pre>
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
 sudo /etc/init.d/elasticsearch start
-~~~</p>
+</pre>
+
 <p>Check out a copy of Pony Mail:
-~~~
+<pre>
 cd /var/www
 sudo git clone https://github.com/apache/incubator-ponymail.git
-~~~</p>
+</pre></p>
 <p>Set up Pony Mail:
-~~~
+<pre>
 cd /var/www/ponymail/tools
 sudo python3.4 setup.py
 [... answer questions asked by the setup script ...]
-~~~</p>
+</pre></p>
 <p>Set up Apache httpd by adding, for example, the following virtual host configuration:
 This differs from the normal installation (because of CentOS specifics), so beware</p>
-<p>~~~
+<pre>
 <VirtualHost *:80>
     LuaPackageCPath /usr/lib/lua/5.3/?.so
     LuaPackagePath  /usr/share/lua/5.3/?.lua
@@ -103,16 +109,19 @@ This differs from the normal installation (because of CentOS specifics), so bewa
     LuaCodeCache    stat
     AcceptPathInfo  On
 </VirtualHost>
-~~~</p>
+</pre>
+
 <p>(re)start apache:</p>
-<p>~~~
+<pre>
 sudo apachectl restart
-~~~</p>
+</pre>
+
 <p>IF you have SELinux running, you need to allow httpd (apache) to
 be able to connect to remotes, otherwise Pony Mail won't work:</p>
-<p>~~~
+<pre>
 sudo setsebool -P httpd_can_network_connect 1
-~~~</p>
+</pre>
+
 <p>Once this is done, you should now have a <em>working copy</em> of Pony Mail!</p>
 <p>You may wish to tweak the settings in <code>site/js/config.js</code> and your
 elasticsearch settings once Pony mail is up and running.</p>
@@ -121,7 +130,7 @@ detailed information about archiving messages, OAuth, mail settings and
 much more.</p>
 <h2><a id="disclaimer"></a>Disclaimer</h2>
 <p style="font-size: 8pt; line-height: 12pt;">
-    <a href="https://incubator.apache.org"><img src="images/podling.svg" align="right" width="220px"/></a>
+    <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px"/></a>
     Apache Pony Mail (Incubating) is an effort undergoing incubation at
     The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
     Apache Incubator</a>. Incubation is required of all newly accepted projects

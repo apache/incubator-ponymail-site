@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ffffff">
 </head><body>
 <div style="margin: -10px; background: #7e614a; color: #EEE; margin-bottom: 20px; text-align: center;">
-    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="images/devme.png" alt="Fork/Download Pony Mail"></a>
+    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="/images/devme.png" alt="Fork/Download Pony Mail"></a>
     <h1><a id="Pony_Mail_0"></a>Apache Pony Mail (Incubating)</h1>
     <div id="menubar" style="font-size: 20pt; background: #5e514a; padding-top: 5px;">
         <ul>
@@ -64,10 +64,11 @@ for detailed package installation instructions:</p>
 <h3>Using auth for ElasticSearch</h3>
 <p>If your ElasticSearch instance requires authentication for the importer/archiver, please
 add the following lines in the <code>elasticsearch</code> block of <code>ponymail.cfg</code> once generated:</p>
-<p>~~~
+<pre>
 user:           [username for ES]
 password:       [password for ES]
-~~~</p>
+</pre>
+
 <h3>Using Apache HTTP Server:</h3>
 <ul>
 <li>Set up a VirtualHost block in Apache httpd that points to the <code>site/</code> directory in Pony Mail</li>
@@ -132,14 +133,15 @@ to specify and implement an OAuth provider.</p>
 as ASF Oauth and Google OAuth. You can enable these by uncommenting the lines in
 question, or set up your own OAuth portal to handle things. This is a standard
 OAuth that expects the backend to supply the following JSON data on success:</p>
-<p>~~~
+<pre>
     {
         "fullname": "The full name of the authed user",
         "email": "The user's email address",
         "uid": "(optional) The unique user ID of the logged in user (for instance, LDAP UID)",
         "isMember": true/false (optional, specifies whether the person is a privileged user with access to all lists)
     }
-~~~</p>
+</pre>
+
 <p>For private list browsing, Pony Mail supplies an example AAA library in
 <code>site/api/lib/aaa.lua</code> that does LDAP lookups to determine which groups a person
 belongs to, and thus which lists said person has access to. The AAA example is
@@ -149,15 +151,17 @@ your need. We have <a href="../aaa_examples/">several simple AAA examples</a> in
 <p>If you are looking for an OAuth portal to provide users access to private lists
 in the archive, you will need to add the OAuth domain to config.admin_oauth in
 config.lua:</p>
-<p>~~~
+<pre>
     admin_oauth = { 'myoauth.foo.tld', '*.oauthprovider.com', 'etc' }
-~~~~</p>
+</pre>
+
+<p>~</p>
 <p>If not specified in config.lua, OAuth will only provide users with a place to
 store settings and notifications, and - provided your mail server is set to accept
 this - a place to reply to emails in the archive.</p>
 <h4>Using GitHub OAuth and other client-secret providers</h4>
 <p>If your OAuth provider requires a client secret, you can specify this in <code>site/api/lib/config.lua</code>, as this GitHub example shows:</p>
-<p>~~~
+<pre>
     oauth_fields = {
         github = {
             client_secret = "abcdef1",
@@ -165,43 +169,47 @@ this - a place to reply to emails in the archive.</p>
             oauth_token = "https://github.com/login/oauth/access_token"
         }
     }
-~~~</p>
+</pre>
+
 <p>This essentially overrides <code>config.js</code> but without showing the data to anyone outside the server.</p>
 <h3>Whitelisting replies via the Web UI</h3>
 <p>To have Pony Mail accept replies done via the Web UI, you must make sure
 that <code>site/api/lib/config.lua</code> contains the appropriate string (or array of strings) matching the domain(s) you wish to allow new email for. To allow replies to everything, set this to <code>*</code>(NOT RECOMMENDED).
 You can also allow based on GLOBs or an array of accepted domains and sub-domains:</p>
-<p>~~~
-    accepted_domains = "<em>" -- This would allow posts to any email address, baaaad choice.
-    accepted_domains = "foo.org" -- Allow only to </em>@foo.org
-    accepted_domains = "<em>.foo.org" -- Allow only posts to </em>@<em>.foo.org, but not </em>@foo.org
-    accepted_domains = { "foo.org", "<em>.foo.org" } -- Allow posts both to </em>.foo.org and foo.org
-~~~</p>
+<pre>
+    accepted_domains = "*" -- This would allow posts to any email address, baaaad choice.
+    accepted_domains = "foo.org" -- Allow only to *@foo.org
+    accepted_domains = "*.foo.org" -- Allow only posts to *@*.foo.org, but not *@foo.org
+    accepted_domains = { "foo.org", "*.foo.org" } -- Allow posts both to *.foo.org and foo.org
+</pre>
+
 <h3>Setting email footers</h3>
 <p>It is possible to set email footers in each email sent via the Web UI.
 This is done by configuring the <code>email_footer</code> variable in  <code>site/api/lib/config.lua</code>.
 You may use the following variables in the footer:</p>
-<p>~~~
+<pre>
     $list: The mailing list being sent to (foo@bar.tld)
     $hostname: The hostname of the server
     $port: The port of the server (80, 443 etc)
     $msgid: The message ID of the email (for permalinks etc)
-~~~</p>
+</pre>
+
 <p>An example footer could be:</p>
-<p>~~~
+<pre>
     --------
     Sent via Pony Mail for $list.
     To view this list online, visit: https://my.tld/list.html?$list
     To view this email (and subsequent replies), visit:
     https://my.tld/thread.html/$msgid
     --------
-~~~</p>
+</pre>
+
 <h3>A note on email headers</h3>
 <p>By default, headers such as to/cc are not shown in the normal email view.
 To enable these headers, set <code>full_headers</code> to <code>true</code> in the <code>site/api/lib/config.lua</code> file.</p>
 <h2><a id="disclaimer"></a>Disclaimer</h2>
 <p style="font-size: 8pt; line-height: 12pt;">
-    <a href="https://incubator.apache.org"><img src="images/podling.svg" align="right" width="220px"/></a>
+    <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px"/></a>
     Apache Pony Mail (Incubating) is an effort undergoing incubation at
     The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
     Apache Incubator</a>. Incubation is required of all newly accepted projects

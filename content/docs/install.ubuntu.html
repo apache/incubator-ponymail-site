@@ -20,7 +20,7 @@
 <meta name="theme-color" content="#ffffff">
 </head><body>
 <div style="margin: -10px; background: #7e614a; color: #EEE; margin-bottom: 20px; text-align: center;">
-    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="images/devme.png" alt="Fork/Download Pony Mail"></a>
+    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="/images/devme.png" alt="Fork/Download Pony Mail"></a>
     <h1><a id="Pony_Mail_0"></a>Apache Pony Mail (Incubating)</h1>
     <div id="menubar" style="font-size: 20pt; background: #5e514a; padding-top: 5px;">
         <ul>
@@ -46,53 +46,58 @@
 <li>python3-pip</li>
 <li>subversion</li>
 </ul>
-<p>~~~
+<pre>
 sudo apt-get install apache2 git liblua5.2-dev lua-cjson lua-sec lua-socket python3 python3-pip subversion
-~~~</p>
+</pre>
+
 <p>Install the required Python 3 modules:
-~~~
+<pre>
 sudo pip3 install elasticsearch formatflowed netaddr
-~~~</p>
+</pre></p>
 <p>Install ElasticSearch:</p>
-<p>~~~
+<pre>
 sudo apt-get default-jre-headless
 wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
-sudo apt-get update &amp;&amp; sudo apt-get install elasticsearch
-~~~</p>
+sudo apt-get update && sudo apt-get install elasticsearch
+</pre>
+
 <p>Compile and install mod_lua if necessary (httpd &lt; 2.4.17 on Ubuntu):
-~~~
+<pre>
 apt-get install apache2-dev
 svn co https://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/modules/lua/
 cd lua/
 apxs -I/usr/include/lua5.2 -cia mod_lua.c lua_*.c -lm -llua5.2
-~~~</p>
+</pre></p>
 <p>Check out a copy of Pony Mail:
-~~~
+<pre>
 cd /var/www
 git clone https://github.com/apache/incubator-ponymail.git
-~~~</p>
+</pre></p>
 <p>Configure Elasticsearch to automatically start during bootup. For Ubuntu &lt;= 14.10:</p>
-<p>~~~
+<pre>
 sudo update-rc.d elasticsearch defaults 95 10
-~~~</p>
+</pre>
+
 <p>For Ubuntu &gt;= 15.04:</p>
-<p>~~~
+<pre>
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
-~~~</p>
+</pre>
+
 <p>Start up ElasticSearch:</p>
-<p>~~~
+<pre>
 service elasticsearch start
-~~~</p>
+</pre>
+
 <p>Set up Pony Mail:
-~~~
+<pre>
 cd /var/www/ponymail/tools
 sudo python3 setup.py
 [... answer questions asked by the setup script ...]
-~~~</p>
+</pre></p>
 <p>Set up Apache httpd by adding, for example, the following virtual host configuration:</p>
-<p>~~~
+<pre>
 <VirtualHost *:80>
     ServerName mylists.foo.tld
     DocumentRoot /var/www/ponymail/site
@@ -101,12 +106,14 @@ sudo python3 setup.py
     LuaCodeCache    stat
     AcceptPathInfo  On
 </VirtualHost>
-~~~</p>
+</pre>
+
 <p>Enable mod_lua and start apache:</p>
-<p>~~~
+<pre>
 sudo a2enmod lua
 sudo service apache start
-~~~</p>
+</pre>
+
 <p>Once this is done, you should now have a <em>working copy</em> of Pony Mail!</p>
 <p>You may wish to tweak the settings in <code>site/js/config.js</code> and your
 elasticsearch settings once Pony mail is up and running.</p>
@@ -115,7 +122,7 @@ detailed information about archiving messages, OAuth, mail settings and
 much more.</p>
 <h2><a id="disclaimer"></a>Disclaimer</h2>
 <p style="font-size: 8pt; line-height: 12pt;">
-    <a href="https://incubator.apache.org"><img src="images/podling.svg" align="right" width="220px"/></a>
+    <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px"/></a>
     Apache Pony Mail (Incubating) is an effort undergoing incubation at
     The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
     Apache Incubator</a>. Incubation is required of all newly accepted projects
