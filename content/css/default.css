@@ -2149,7 +2149,7 @@ img {
 }
 
 .menu a:hover {
-    color: #35D7BB
+    color: #35D7BB;
 }
 
 .menu .menu-item {
@@ -4501,6 +4501,11 @@ img {
     }
 }
 
+#menubar {
+    font-size: 20pt;
+    background: #4e413a;
+    padding-top: 5px;
+}
 #menubar ul {
     list-style: none;
     display: inline;
@@ -4531,4 +4536,5 @@ img {
 }
 #menubar a:hover {
     color: #FF7;
+    text-shadow: 0px 0px 1px rgba(255,150,50,0.75);
 }
