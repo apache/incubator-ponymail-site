@@ -66,7 +66,7 @@ git rebase ponymail/master
 
 At this point the local branch with one single commit on top of the latest master and it can be pushed to your fork:
 ~~~
-git push <your-fork's-remote> feature-branch -f # You might need to push with --force
+git push &lt;your-fork's-remote&gt; feature-branch -f # You might need to push with --force
                                                 # because of the rebase to the latest master
 ~~~
 
