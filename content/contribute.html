@@ -55,6 +55,57 @@ documentation, evangelism, marketing, or helping out other users.</p>
 <li>Let us know what you want to do, and we'll add you to our contributors list!</li>
 <li>Join us on #ponymail on the Freenode IRC network</li>
 </ul>
+<h3>Git Workflow</h3>
+<p>The following workflow is adapted from the <a href="https://cwiki.apache.org/confluence/display/JCLOUDS/Git+workflow">jClouds workflow</a>:</p>
+<h4>Prepare your fork</h4>
+<p>The first thing to do is to make sure you have the ponymail Git
+repository configured as a remote. In this case we will add it as a
+remote called "ponymail":
+<pre>
+cd ponymail
+git remote add ponymail https://git-wip-us.apache.org/repos/asf/incubator-ponymail.git</p>
+</pre>
+
+<h4>Create the feature branch</h4>
+<p>When beginning working on the feature, take a branch from the latest master version:
+<pre>
+git checkout master
+git fetch ponymail
+git reset --hard ponymail/master
+git checkout -b feature-branch
+</pre></p>
+<p>As we want a clean master and we should never use directly use the
+master branch (it should be only used to sync the fork with the upstream
+repo), so we can just reset hard it instead of rebasing. Develop the
+feature and address the review comments</p>
+<p>Develop the feature normally, commit the changes (you can create N
+commits if needed), and open the pull request.</p>
+<p>Once the pull request is open and has been reviewed, address any review
+comments and add the changes in new commits. This will make it easier
+for the reviewer to focus only in the last changes without having to go
+again through the entire pull request. Once the PR is ready to be
+merged, you'll be asked to squash the commits. Preparing the pull
+request to be merged</p>
+<p>First squash the commits, to have a cleaner rebase (it is easier to rebase having one single commit than having N commits):
+<code>git rebase -i HEAD~N     # Where N is the number of commits in the pull request</code></p>
+<p>Now that there is only one commit, update the branch to the latest version of master:
+<pre>
+git fetch ponymail
+git rebase ponymail/master
+</pre></p>
+<p>At this point the local branch with one single commit on top of the latest master and it can be pushed to your fork:</p>
+<p><code>git push &lt;your-fork's-remote&gt; feature-branch -f   # You might need to push with --force because of the rebase to the latest master</code></p>
+<p>Now the pull request will be clean with one single commit and up to date
+with the latest master. Ready to be merged!</p>
+<h4>A note about keeping the pull request up to date</h4>
+<p>The key point is to <em>avoid</em> updating your feature branch with master
+until the PR is ready to be merged (or until you're asked to rebase).
+This way you'll avoid accidental merge commits and fixing conflicts when
+you shouldn't be dealing with that. If for you want to keep your branch
+up to date with the latest master changes anyway, always rebase it;
+don't git pull or introduce merge commits, as it will complicate the
+rebasing process and will make it difficult to merge the pull request in
+a clean way</p>
 <h4><a id="disclaimer"></a>Disclaimer</h4>
 <p style="font-size: 8pt; line-height: 12pt;">
     <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px"/></a>
