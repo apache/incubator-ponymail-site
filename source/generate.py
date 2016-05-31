@@ -20,6 +20,7 @@ def runDir(path):
             outfile = path.replace("markdown", "", 1) + outfile
             text = input_file.read()
             text = re.sub(r"~~~([\s\S]+?)~~~", "<pre>\\1</pre>", text, flags=re.MULTILINE)
+            text = re.sub(r"([A-Z/]+)\.md", lambda x: x.group(1).lower() + ".html", text, flags =re.MULTILINE)
             html = markdown.markdown(text)
             html = template.replace("%CONTENT%", html, 1)
             print("Writing %s..." % outfile)
