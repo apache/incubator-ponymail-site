@@ -6,7 +6,7 @@ documentation, evangelism, marketing, or helping out other users.
 
 To contribute to Pony Mail, follow these steps:
 
-- Fork the repo
+- [Fork the repo](/source.html)
 - Subscribe to the Pony Mail dev list:
 - - Either send an email to dev-subscribe@ponymail.incubator.apache.org OR
 - - Visit [https://lists.apache.org/list.html?dev@ponymail.apache.org](https://lists.apache.org/list.html?dev@ponymail.apache.org) (You can use Persona or ASF OAuth)
