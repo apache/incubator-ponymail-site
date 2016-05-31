@@ -4499,3 +4499,35 @@ img {
         width: 100%
     }
 }
+
+#menubar ul {
+    list-style: none;
+    display: inline;
+}
+#menubar ul li {
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    
+}
+#menubar i {
+    clear: right;
+    display: block;
+    max-height: 14px;
+}
+#menubar i:after {
+    content:"\a";
+    white-space: pre; 
+}
+#menubar span {
+    font-size: 10pt;
+    font-family: cursive;
+    color: #FFD;
+}
+#menubar a {
+    color: #FFA;
+}
+#menubar a:hover {
+    color: #FF7;
+}
