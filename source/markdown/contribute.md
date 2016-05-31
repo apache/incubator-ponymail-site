@@ -25,7 +25,6 @@ remote called "ponymail":
 ~~~
 cd ponymail
 git remote add ponymail https://git-wip-us.apache.org/repos/asf/incubator-ponymail.git
-
 ~~~
 
 #### Create the feature branch
