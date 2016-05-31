@@ -33,20 +33,68 @@
         </ul>
     </div>
 </div>
-<h3>Contributing to Pony Mail</h3>
-<p>We'd LOVE if more people would contribute to Pony Mail!
-Any form of contribution is most welcome, whether it be programming,
-documentation, evangelism, marketing, or helping out other users.</p>
-<p>To contribute to Pony Mail, follow these steps:</p>
+<h1>Installing Pony Mail on Debian Jessie:</h1>
+<p>Start by installing the following Debian packages:</p>
 <ul>
-<li>Fork the repo</li>
-<li>Subscribe to the Pony Mail dev list:</li>
-<li>Either send an email to dev-subscribe@ponymail.incubator.apache.org OR</li>
-<li>Visit https://lists.apache.org/list.html?dev@ponymail.apache.org (You can use Persona or ASF OAuth)</li>
-<li>Find something to fix or help out with</li>
-<li>Let us know what you want to do, and we'll add you to our contributors list!</li>
-<li>Join us on #ponymail on the Freenode IRC network</li>
+<li>apache2</li>
+<li>git</li>
+<li>lua-sec</li>
+<li>lua-cjson</li>
+<li>lua-socket</li>
+<li>python3</li>
+<li>python3-pip</li>
 </ul>
+<p>~~~
+sudo apt-get install apache2 git lua-cjson lua-sec lua-socket python3 python3-pip
+~~~</p>
+<p>Install the required Python 3 modules:
+~~~
+sudo pip3 install elasticsearch formatflowed netaddr
+~~~</p>
+<p>Install ElasticSearch:</p>
+<p>~~~
+sudo apt-get install openjdk-7-jre-headless
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-1.7.list
+sudo apt-get update &amp;&amp; sudo apt-get install elasticsearch
+~~~</p>
+<p>Check out a copy of Pony Mail:
+~~~
+cd /var/www
+sudo git clone https://github.com/apache/incubator-ponymail.git
+~~~</p>
+<p>Start up ElasticSearch:</p>
+<p>~~~
+sudo service elasticsearch start
+~~~</p>
+<p>Set up Pony Mail:
+~~~
+cd /var/www/ponymail/tools
+sudo python3 setup.py
+[... answer questions asked by the setup script ...]
+~~~</p>
+<p>Set up Apache httpd by adding, for example, the following virtual host configuration:</p>
+<p>~~~
+<VirtualHost *:80>
+    ServerName mylists.foo.tld
+    DocumentRoot /var/www/ponymail/site
+    AddHandler      lua-script .lua
+    LuaScope        thread
+    LuaCodeCache    stat
+    AcceptPathInfo  On
+</VirtualHost>
+~~~</p>
+<p>Enable mod_lua and start apache:</p>
+<p>~~~
+sudo a2enmod lua
+sudo service apache start
+~~~</p>
+<p>Once this is done, you should now have a <em>working copy</em> of Pony Mail!</p>
+<p>You may wish to tweak the settings in <code>site/js/config.js</code> and your
+elasticsearch settings once Pony mail is up and running.</p>
+<p>Refer to the <a href="INSTALLING.md">General installation documentation</a> for
+detailed information about archiving messages, OAuth, mail settings and
+much more.</p>
 <h2><a id="disclaimer"></a>Disclaimer</h2>
 <p style="font-size: 8pt; line-height: 12pt;">
     <a href="https://incubator.apache.org"><img src="images/podling.svg" align="right" width="220px"/></a>

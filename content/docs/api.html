@@ -1,0 +1,166 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Apache Pony Mail (Incubating)</title>
+<link rel="stylesheet" type="text/css" href="/css/default.css"/>
+<link rel="stylesheet" type="text/css" href="/css/fa/fa.css"/>
+<link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+</head><body>
+<div style="margin: -10px; background: #7e614a; color: #EEE; margin-bottom: 20px; text-align: center;">
+    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="images/devme.png" alt="Fork/Download Pony Mail"></a>
+    <h1><a id="Pony_Mail_0"></a>Apache Pony Mail (Incubating)</h1>
+    <div id="menubar" style="font-size: 20pt; background: #5e514a; padding-top: 5px;">
+        <ul>
+            <li><a href="/docs.html"><i class="fa fa-book"></i><span>Documentation</span></a></li>
+            <li><a href="/source.html"><i class="fa fa-git-square"></i><span>Source</span></a></li>
+            <li><a href="/downloads.html"><i class="fa fa-cloud-download"></i><span>Download</span></a></li>
+            <li><a href="/support.html"><i class="fa fa-question-circle"></i><span>Get support</span></a></li>
+            <li><a href="/contribute.html"><i class="fa fa-share-alt"></i><span>Contribute</span></a></li>
+            <li><a href="/about.html"><i class="fa fa-users"></i><span>About</span></a></li>
+        </ul>
+    </div>
+</div>
+<h1>Pony Mail Archive API</h1>
+<h3>Fetching a specific email:</h3>
+<p>Usage:
+<code>GET /api/email.lua?id=$mid</code></p>
+<p>Parameters: (cookie may be required)
+  - $mid: The email ID or Message-ID: header</p>
+<p>Response example:</p>
+<p>~~~
+{
+    "references": "<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#103;&#105;&#116;&#45;&#112;&#114;&#45;&#49;&#56;&#45;&#97;&#110;&#121;&#50;&#51;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#103;&#105;&#116;&#45;&#112;&#114;&#45;&#49;&#56;&#45;&#97;&#110;&#121;&#50;&#51;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>",
+    "from_raw": "lewismc <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#103;&#105;&#116;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#103;&#105;&#116;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>",
+    "message-id": "<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#50;&#48;&#49;&#53;&#48;&#57;&#48;&#53;&#49;&#53;&#51;&#52;&#49;&#54;&#46;&#48;&#67;&#68;&#67;&#70;&#68;&#70;&#69;&#54;&#54;&#64;&#103;&#105;&#116;&#49;&#45;&#117;&#115;&#45;&#119;&#101;&#115;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#50;&#48;&#49;&#53;&#48;&#57;&#48;&#53;&#49;&#53;&#51;&#52;&#49;&#54;&#46;&#48;&#67;&#68;&#67;&#70;&#68;&#70;&#69;&#54;&#54;&#64;&#103;&#105;&#116;&#49;&#45;&#117;&#115;&#45;&#119;&#101;&#115;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>",
+    "@import_timestamp": "2015/10/04 09:52:41",
+    "body": "Body of email here...",
+    "request_id": "06b318af97ca96c115e878c14d0814a53407751c31388410421c1751@1441467256@<dev.any23.apache.org>",
+    "@version": 1,
+    "attachments": {},
+    "list": "<dev.any23.apache.org>",
+    "date": "2015/09/05 17:34:16",
+    "from": "lewismc <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#103;&#105;&#116;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#103;&#105;&#116;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>",
+    "gravatar": "a676c0bf448fcd49f588249ead719b4c",
+    "in-reply-to": "<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#103;&#105;&#116;&#45;&#112;&#114;&#45;&#49;&#56;&#45;&#97;&#110;&#121;&#50;&#51;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#103;&#105;&#116;&#45;&#112;&#114;&#45;&#49;&#56;&#45;&#97;&#110;&#121;&#50;&#51;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>",
+    "epoch": 1441467256,
+    "subject": "[GitHub] any23 pull request: Gsoc 2015 Microformats2",
+    "mid": "06b318af97ca96c115e878c14d0814a53407751c31388410421c1751@1441467256@<dev.any23.apache.org>",
+    "private": false,
+    "tid": "06b318af97ca96c115e878c14d0814a53407751c31388410421c1751@1441467256@<dev.any23.apache.org>",
+    "list_raw": "<dev.any23.apache.org>"
+}
+~~~</p>
+<h3>Fetching list data</h3>
+<p>Usage:
+<code>GET /api/stats.lua?list=$list&amp;domain=$domain[&amp;d=$timespan][&amp;q=$query][&amp;header_from=$from][&amp;header_subject=$subject]</code></p>
+<p>Parameters:
+    - $list: The list prefix (e.g. <code>dev</code>). Wildcards may be used
+    - $domain: The list domain (e.g. <code>httpd.apache.org</code>). Wildcards may be used
+    - $timespan: A <a href="#Timespans">timespan</a> value
+    - $query: A search query (may contain wildcards or negations):
+      - <code>foo</code>: Find all documents containing <code>foo</code> in headers or body
+      - <code>-foo</code>: Find all documents NOT containing <code>foo</code>.
+      - <code>foo*</code>: Find all documents containing <code>foo</code>, <code>fooa</code>, <code>foob</code> etc
+    - $from: Optional From: address
+    - $subject: Optional Subject: line</p>
+<p>Response example:</p>
+<p>~~~
+{
+    "took": 437179,
+    "firstYear": 2015,
+    "emails": {...},
+    "no_threads": 10,
+    "domain": "ponymail.info",
+    "participants": {...},
+    "lastYear": 2015,
+    "name": "dev",
+    "cloud": {...},
+    "hits": 25,
+    "thread_struct": {...},
+    "max": 5000,
+    "searchlist": "<dev.ponymail.info>",
+    "list": "dev@ponymail.info",
+    "numparts": 0,
+    "using_wc": false
+}
+~~~</p>
+<h3>Fetching preferences and quick list overview</h3>
+<p>Usage:
+<code>GET /api/preferences.lua[?logout=true]</code></p>
+<p>Parameters: (cookie required)
+  - logout: Whether to log out of the system (optional)</p>
+<p>Response example:</p>
+<p>~~~
+{
+    "lists": {
+        "ponymail.info": {
+            "user": 5,
+            "dev": 36,
+            "commits": 279
+        }
+    },
+    "descriptions": {
+    },
+    "preferences": {
+        "displayMode": "threaded",
+        "hideStats": "no",
+        "theme": "default",
+        "notifications": "direct",
+        "sortOrder": "forward",
+        "compactQuotes": "yes",
+        "fullname": "Daniel Gruno",
+        "groupBy": "thread"
+    },
+    "took": 38487,
+    "login": {
+        "notifications": 0,
+        "credentials": {
+            "fullname": "Daniel Gruno",
+            "email": "foo@bar.tld"
+        }
+    }
+}
+~~~</p>
+<h3>Fetching notifications for a logged in user</h3>
+<p>Usage:
+<code>GET /api/notifications.lua</code></p>
+<p>Parameters: <code>None</code> (cookie required)</p>
+<p>Response example:</p>
+<p>~~~
+{
+    "notifications": {...}
+}
+~~~</p>
+<h2><a id="disclaimer"></a>Disclaimer</h2>
+<p style="font-size: 8pt; line-height: 12pt;">
+    <a href="https://incubator.apache.org"><img src="images/podling.svg" align="right" width="220px"/></a>
+    Apache Pony Mail (Incubating) is an effort undergoing incubation at
+    The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
+    Apache Incubator</a>. Incubation is required of all newly accepted projects
+    until a further review indicates that the infrastructure,
+    communications, and decision making process have stabilized in a
+    manner consistent with other successful ASF projects. While
+    incubation status is not necessarily a reflection of the
+    completeness or stability of the code, it does indicate that the
+    project has yet to be fully endorsed by the ASF.
+</p>
+<p style="font-size: 8pt; line-height: 12pt;">
+    Copyright 2016, the Apache Software Foundation.<br/>
+    Apache Pony Mail is a trademark of the Apache Software Foundation.
+    Apache and the Apache feather are registered trademarks of the
+    Apache Software Foundation.
+</p>
+</body></html>

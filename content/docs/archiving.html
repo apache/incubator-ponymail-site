@@ -1,0 +1,126 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Apache Pony Mail (Incubating)</title>
+<link rel="stylesheet" type="text/css" href="/css/default.css"/>
+<link rel="stylesheet" type="text/css" href="/css/fa/fa.css"/>
+<link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+</head><body>
+<div style="margin: -10px; background: #7e614a; color: #EEE; margin-bottom: 20px; text-align: center;">
+    <a href="#contribute"><img align='left' style="width: 150px; height: 150px; position: relative; left: -4px; border: 0;" src="images/devme.png" alt="Fork/Download Pony Mail"></a>
+    <h1><a id="Pony_Mail_0"></a>Apache Pony Mail (Incubating)</h1>
+    <div id="menubar" style="font-size: 20pt; background: #5e514a; padding-top: 5px;">
+        <ul>
+            <li><a href="/docs.html"><i class="fa fa-book"></i><span>Documentation</span></a></li>
+            <li><a href="/source.html"><i class="fa fa-git-square"></i><span>Source</span></a></li>
+            <li><a href="/downloads.html"><i class="fa fa-cloud-download"></i><span>Download</span></a></li>
+            <li><a href="/support.html"><i class="fa fa-question-circle"></i><span>Get support</span></a></li>
+            <li><a href="/contribute.html"><i class="fa fa-share-alt"></i><span>Contribute</span></a></li>
+            <li><a href="/about.html"><i class="fa fa-users"></i><span>About</span></a></li>
+        </ul>
+    </div>
+</div>
+<h1>Archiving New Emails to Pony Mail</h1>
+<p>This document exists to extend the <a href="INSTALLING.md">general install guide</a> provide examples on how to archive emails.</p>
+<p><strong>Note:</strong> If you plan on <a href="IMPORTING.md">importing old emails from an archive</a>,
+please set up the archiver <strong>first</strong> so as to create an overlap of new emails
+coming in and old emails being imported. The system is designed to handle this
+without creating duplicate entries in the archive.</p>
+<h2>Mailman 2.x example:</h2>
+<p>Set up a Pony Mail mail account/alias on a machine. This can be your local mail
+server, it can be the machine that Pony Mail is on (install sendmail or postfix
+etc there), or it can be any other machine with access to the ElasticSearch
+database that Pony Mail uses.</p>
+<h3>Pre-requisites</h3>
+<p>If this is not the machine Pony Mail was installed on, you'll need to copy the
+tools/ directory from your Pony Mail installation to this machine and adjust
+ponymail.cfg to point to the right place for the database. You will also need
+Python 3 and the helper libraries installed
+(<code>pip3 install elasticsearch formatflowed netaddr</code>)</p>
+<h3>Create an alias:</h3>
+<p>Set up a mail alias for public and private lists in <code>/etc/aliases</code> or similar method,
+and point them at the archiver script in tools/:</p>
+<p>~~~</p>
+<h1>You may need to add "--altheader delivered-to" to these commands, it varies</h1>
+<p>foo-public: "|/usr/bin/python3 /path/to/tools/archiver.py"
+foo-private: "|/usr/bin/python3 /path/to/tools/archiver.py --private"
+~~~</p>
+<p>Once done, run <code>newaliases</code> to update your alias DB.</p>
+<h3>Subscribe the aliases to your mailing lists</h3>
+<p>Use the mailman UI or CLI to subscribe foo-public@ to your public lists and
+foo-private to your private lists. Don't worry, the contents of private lists
+are hidden by default till the correct AAA scripting is set up.</p>
+<h2>ezmlm example:</h2>
+<p>First, see the general introduction in the MM2 example, as this applies here as well.</p>
+<h3>Create an alias:</h3>
+<p>Set up a dot-forward file for a public and a private alias:</p>
+<p>~~~
+.qmail-archive-public:
+    "|/usr/bin/python3 /path/to/tools/archiver.py"</p>
+<p>.qmail-archive-private:
+    "|/usr/bin/python3 /path/to/tools/archiver.py --private"
+~~~</p>
+<h3>Subscribe the aliases to your mailing lists</h3>
+<p>Use the ezmlm CLI to subscribe your new aliases to the lists:
+<code>ezmlm-sub foolist/ archive-public@yourhost.tld</code>
+<code>ezmlm-sub secretlist/ archive-private@yourhost.tld</code></p>
+<h2>Setting up AAA</h2>
+<p>If you have an custom OAuth2 provider and a binary approach to private access
+(either/or), you can enable private access to people by having a key/value pair
+called <code>isMember</code> set to <code>true</code> in your JSON response from the OAuth server,
+provided it is set as an authority in config.lua. This will provide anyone
+defined as a member via OAuth full access to all private lists.</p>
+<p>If you use LDAP, you can modify the LDAP queries in the example AAA file to suit
+your organization.</p>
+<h2>Importing/Archiving HTML-only emails</h2>
+<p>Should you need to import HTML-only emails into the archive, you may enable this
+with the <code>--html2text</code> command line arg. This requires that the <code>html2text</code> Python3 package
+is installed beforehand.</p>
+<h2>Munging list IDs</h2>
+<p>If you need to rewrite list IDs on the fly as emails come in, you can use the debug.cropout 
+setting for this (in <code>ponymail.cfg</code>). </p>
+<p>You can either use it to just crop away something:
+~~~
+ [debug]
+  # Remove 'foo' from all list IDs
+  cropout:  foo
+~~~</p>
+<p>Or you can use it as a regex substitution:
+~~~
+ [debug]
+  #Replace '<em>.bar.tld' with '</em>.blorg.bar.tld'
+  cropout:  &lt;([a-z]+).bar.tld&gt; &lt;\1.blorg.bar.tld&gt;
+~~~</p>
+<h2><a id="disclaimer"></a>Disclaimer</h2>
+<p style="font-size: 8pt; line-height: 12pt;">
+    <a href="https://incubator.apache.org"><img src="images/podling.svg" align="right" width="220px"/></a>
+    Apache Pony Mail (Incubating) is an effort undergoing incubation at
+    The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
+    Apache Incubator</a>. Incubation is required of all newly accepted projects
+    until a further review indicates that the infrastructure,
+    communications, and decision making process have stabilized in a
+    manner consistent with other successful ASF projects. While
+    incubation status is not necessarily a reflection of the
+    completeness or stability of the code, it does indicate that the
+    project has yet to be fully endorsed by the ASF.
+</p>
+<p style="font-size: 8pt; line-height: 12pt;">
+    Copyright 2016, the Apache Software Foundation.<br/>
+    Apache Pony Mail is a trademark of the Apache Software Foundation.
+    Apache and the Apache feather are registered trademarks of the
+    Apache Software Foundation.
+</p>
+</body></html>
