@@ -22,6 +22,7 @@ private.
 
 
 ### Features include: ###
+
 * Importing from standard mbox files, maildir directory, Pipermail or an mod_mbox-driven site
 * Public and private list viewing based on auth
 * Cross-list threading
@@ -64,14 +65,7 @@ list size and available bandwidth.
 
 ### TODO: ###
 This is a list of what we would love to get done:
-* ~~Set up dir structure~~ (*DONE*)
-* ~~Import site data~~ (*DONE*)
-* ~~Import tools~~ (*DONE*)
-* ~~Import settings / setup tools~~ (*DONE*)
-* ~~Import, fix archiver~~ (*DONE*)
-* ~~Add license headers (ALv2) to everything~~ (*DONE(?)*)
-* ~~Have reply feature actually work~~ (*DONE*)
-* ~~Split JS into smaller files for development, bundle together for releases~~ (*DONE*)
+
 * Start on documentation (WIP)
 * Rework JS, turn those ugly innerHTML hacks into proper DOM handling
 * Set up notification system (depends on reply system) (works, but still *WIP!*)
