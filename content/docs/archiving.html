@@ -33,24 +33,24 @@
         </ul>
     </div>
 </div>
-<h1 id='archivingnewemailstoponymail'>Archiving New Emails to Pony Mail</h1>
+<h1 id='archivingnewemailstoponymail'>Archiving New Emails to Pony Mail<a href='#archivingnewemailstoponymail' style='color: rgba(0,0,0,0);'>&para;</a></h1>
 <p>This document exists to extend the <a href="installing.html">general install guide</a> provide examples on how to archive emails.</p>
 <p><strong>Note:</strong> If you plan on <a href="importing.html">importing old emails from an archive</a>,
 please set up the archiver <strong>first</strong> so as to create an overlap of new emails
 coming in and old emails being imported. The system is designed to handle this
 without creating duplicate entries in the archive.</p>
-<h2 id='mailman2xexample'>Mailman 2.x example:</h2>
+<h2 id='mailman2xexample'>Mailman 2.x example:<a href='#mailman2xexample' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>Set up a Pony Mail mail account/alias on a machine. This can be your local mail
 server, it can be the machine that Pony Mail is on (install sendmail or postfix
 etc there), or it can be any other machine with access to the ElasticSearch
 database that Pony Mail uses.</p>
-<h3 id='prerequisites'>Pre-requisites</h3>
+<h3 id='prerequisites'>Pre-requisites<a href='#prerequisites' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>If this is not the machine Pony Mail was installed on, you'll need to copy the
 tools/ directory from your Pony Mail installation to this machine and adjust
 ponymail.cfg to point to the right place for the database. You will also need
 Python 3 and the helper libraries installed
 (<code>pip3 install elasticsearch formatflowed netaddr</code>)</p>
-<h3 id='createanalias'>Create an alias:</h3>
+<h3 id='createanalias'>Create an alias:<a href='#createanalias' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Set up a mail alias for public and private lists in <code>/etc/aliases</code> or similar method,
 and point them at the archiver script in tools/:</p>
 <pre>
@@ -60,13 +60,13 @@ foo-private: "|/usr/bin/python3 /path/to/tools/archiver.py --private"
 </pre>
 
 <p>Once done, run <code>newaliases</code> to update your alias DB.</p>
-<h3 id='subscribethealiasestoyourmailinglists'>Subscribe the aliases to your mailing lists</h3>
+<h3 id='subscribethealiasestoyourmailinglists'>Subscribe the aliases to your mailing lists<a href='#subscribethealiasestoyourmailinglists' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Use the mailman UI or CLI to subscribe foo-public@ to your public lists and
 foo-private to your private lists. Don't worry, the contents of private lists
 are hidden by default till the correct AAA scripting is set up.</p>
-<h2 id='ezmlmexample'>ezmlm example:</h2>
+<h2 id='ezmlmexample'>ezmlm example:<a href='#ezmlmexample' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>First, see the general introduction in the MM2 example, as this applies here as well.</p>
-<h3 id='createanalias'>Create an alias:</h3>
+<h3 id='createanalias'>Create an alias:<a href='#createanalias' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Set up a dot-forward file for a public and a private alias:</p>
 <pre>
 .qmail-archive-public:
@@ -76,11 +76,11 @@ are hidden by default till the correct AAA scripting is set up.</p>
     "|/usr/bin/python3 /path/to/tools/archiver.py --private"
 </pre>
 
-<h3 id='subscribethealiasestoyourmailinglists'>Subscribe the aliases to your mailing lists</h3>
+<h3 id='subscribethealiasestoyourmailinglists'>Subscribe the aliases to your mailing lists<a href='#subscribethealiasestoyourmailinglists' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Use the ezmlm CLI to subscribe your new aliases to the lists:
 <code>ezmlm-sub foolist/ archive-public@yourhost.tld</code>
 <code>ezmlm-sub secretlist/ archive-private@yourhost.tld</code></p>
-<h2 id='settingupaaa'>Setting up AAA</h2>
+<h2 id='settingupaaa'>Setting up AAA<a href='#settingupaaa' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>If you have an custom OAuth2 provider and a binary approach to private access
 (either/or), you can enable private access to people by having a key/value pair
 called <code>isMember</code> set to <code>true</code> in your JSON response from the OAuth server,
@@ -88,11 +88,11 @@ provided it is set as an authority in config.lua. This will provide anyone
 defined as a member via OAuth full access to all private lists.</p>
 <p>If you use LDAP, you can modify the LDAP queries in the example AAA file to suit
 your organization.</p>
-<h2 id='importingarchivinghtmlonlyemails'>Importing/Archiving HTML-only emails</h2>
+<h2 id='importingarchivinghtmlonlyemails'>Importing/Archiving HTML-only emails<a href='#importingarchivinghtmlonlyemails' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>Should you need to import HTML-only emails into the archive, you may enable this
 with the <code>--html2text</code> command line arg. This requires that the <code>html2text</code> Python3 package
 is installed beforehand.</p>
-<h2 id='munginglistids'>Munging list IDs</h2>
+<h2 id='munginglistids'>Munging list IDs<a href='#munginglistids' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>If you need to rewrite list IDs on the fly as emails come in, you can use the debug.cropout 
 setting for this (in <code>ponymail.cfg</code>). </p>
 <p>You can either use it to just crop away something:

@@ -33,7 +33,7 @@
         </ul>
     </div>
 </div>
-<h1 id='installingponymail'>Installing Pony Mail</h1>
+<h1 id='installingponymail'>Installing Pony Mail<a href='#installingponymail' style='color: rgba(0,0,0,0);'>&para;</a></h1>
 <p>If your distro is on this list, please refer to that specific document
 for detailed package installation instructions:</p>
 <ul>
@@ -43,7 +43,7 @@ for detailed package installation instructions:</p>
 <li><a href="install.fedora.html">Fedora (22) Installation Instructions</a></li>
 </ul>
 <p>Otherwise, read the next two chapters:</p>
-<h2 id='prerequisites'>Pre-requisites</h2>
+<h2 id='prerequisites'>Pre-requisites<a href='#prerequisites' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>You will need the following software installed on your machine:</p>
 <ul>
 <li>ElasticSearch &gt;= 1.3 (2.0 should also work just fine)</li>
@@ -51,7 +51,7 @@ for detailed package installation instructions:</p>
 <li>Apache HTTP Server 2.4.x with mod_lua (see http://modlua.org/gs/installing if you need to build mod_lua manually)</li>
 <li>Lua &gt;=5.1 with the following modules: cjson, luasec, luasocket</li>
 </ul>
-<h2 id='downloadandinstall'>Download and Install</h2>
+<h2 id='downloadandinstall'>Download and Install<a href='#downloadandinstall' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <ul>
 <li>Download the git repo: <code>git clone https://github.com/apache/incubator-ponymail.git</code></li>
 <li>Start ElasticSearch on the machine it needs to run on.</li>
@@ -61,7 +61,7 @@ for detailed package installation instructions:</p>
       ...[follow instructions in the setup script]</code></li>
 <li>Edit <code>site/js/config.js</code> to suit your needs (usually very little editing is needed)</li>
 </ul>
-<h3 id='usingauthforelasticsearch'>Using auth for ElasticSearch</h3>
+<h3 id='usingauthforelasticsearch'>Using auth for ElasticSearch<a href='#usingauthforelasticsearch' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>If your ElasticSearch instance requires authentication for the importer/archiver, please
 add the following lines in the <code>elasticsearch</code> block of <code>ponymail.cfg</code> once generated:</p>
 <pre>
@@ -69,20 +69,20 @@ user:           [username for ES]
 password:       [password for ES]
 </pre>
 
-<h3 id='usingapachehttpserver'>Using Apache HTTP Server:</h3>
+<h3 id='usingapachehttpserver'>Using Apache HTTP Server:<a href='#usingapachehttpserver' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <ul>
 <li>Set up a VirtualHost block in Apache httpd that points to the <code>site/</code> directory in Pony Mail</li>
 <li>Add the configuration snippets from <code>configs/ponymail_httpd.conf</code> to the virtual host</li>
 <li>Start Apache httpd to enable the user-facing interface</li>
 </ul>
-<h3 id='usingnginx'>Using nginx:</h3>
+<h3 id='usingnginx'>Using nginx:<a href='#usingnginx' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <ul>
 <li>To use nginx, you will also need to install the <code>lua-apr</code> module from your distro.</li>
 <li>Set up a Server block in nginx that points to the <code>site/</code> directory in Pony Mail</li>
 <li>Add the configuration snippets from <code>configs/ponymail_nginx.conf</code> to the server config</li>
 <li>Start nginx to enable the user-facing interface</li>
 </ul>
-<h2 id='settingupthearchiver'>Setting up the archiver</h2>
+<h2 id='settingupthearchiver'>Setting up the archiver<a href='#settingupthearchiver' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>First off, you will need both <code>tools/archiver.py</code> and the generated
 <code>tools/ponymail.cfg</code> present on the machine that your mail server runs on. This
 machine should also have access to the ElasticSearch backend.</p>
@@ -105,30 +105,30 @@ header determines the list ID using the --altheader argument, for instance:
   enable: yes</code></p>
 <p>For older mailing list systems such as Mailman 2 and ezmlm, you can also
 tak a look at our <a href="archiving.html">archiving examples</a> page for pointers.</p>
-<h2 id='publicversusprivatelists'>Public versus private lists</h2>
+<h2 id='publicversusprivatelists'>Public versus private lists<a href='#publicversusprivatelists' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>In MailMan 3, this should be auto-detected and is not a concern.
 When using other ML systems via piping to STDIN, you should add
 the --private arg to the python script to mark an email as private:
 <code>foolist-private: "|/usr/bin/python3 /path/to/tools/archiver.py --private"
     foolist-public: "|/usr/bin/python3 /path/to/tools/archiver.py"</code></p>
-<h2 id='importingolddataintoponymail'>Importing old data into Pony Mail</h2>
+<h2 id='importingolddataintoponymail'>Importing old data into Pony Mail<a href='#importingolddataintoponymail' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>See <a href="importing.html">this guide</a> for details on how to import old archives into Pony Mail.</p>
-<h2 id='bulkeditinglists'>Bulk editing lists</h2>
+<h2 id='bulkeditinglists'>Bulk editing lists<a href='#bulkeditinglists' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>You can use <code>edit-list.py</code> to perform bulk operations:
 - Rename lists
 - Mark entire lists are private or public</p>
 <p>Run <code>python3 edit-list.py --help</code> for CLI args.</p>
-<h2 id='settingupoauthforponymail'>Setting up OAuth for Pony Mail</h2>
+<h2 id='settingupoauthforponymail'>Setting up OAuth for Pony Mail<a href='#settingupoauthforponymail' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>If you want people to be able to log in and reply via the Web UI, you can either
 use the default Persona login (works for all email addresses) or specify an
 OAuth provider.</p>
-<h3 id='settingupordisablingpersona'>Setting up or disabling Persona</h3>
+<h3 id='settingupordisablingpersona'>Setting up or disabling Persona<a href='#settingupordisablingpersona' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Persona is enabled by default, as it's a fast and convenient way to enable
 logins for <em>public</em> lists. Should you wish to disable Persona, set the
 <code>enabled</code> variable to <code>false</code> in the persona section of <code>site/js/config.js</code>.
 Persona will only ever work for public lists. For private lists, you will need
 to specify and implement an OAuth provider.</p>
-<h3 id='settingupanoauthprovider'>Setting up an OAuth provider</h3>
+<h3 id='settingupanoauthprovider'>Setting up an OAuth provider<a href='#settingupanoauthprovider' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Pony Mail comes with a few default OAuth examples in <code>site/js/config.js</code>, such
 as ASF Oauth and Google OAuth. You can enable these by uncommenting the lines in
 question, or set up your own OAuth portal to handle things. This is a standard
@@ -159,7 +159,7 @@ config.lua:</p>
 <p>If not specified in config.lua, OAuth will only provide users with a place to
 store settings and notifications, and - provided your mail server is set to accept
 this - a place to reply to emails in the archive.</p>
-<h4 id='usinggithuboauthandotherclientsecretproviders'>Using GitHub OAuth and other client-secret providers</h4>
+<h4 id='usinggithuboauthandotherclientsecretproviders'>Using GitHub OAuth and other client-secret providers<a href='#usinggithuboauthandotherclientsecretproviders' style='color: rgba(0,0,0,0);'>&para;</a></h4>
 <p>If your OAuth provider requires a client secret, you can specify this in <code>site/api/lib/config.lua</code>, as this GitHub example shows:</p>
 <pre>
     oauth_fields = {
@@ -172,7 +172,7 @@ this - a place to reply to emails in the archive.</p>
 </pre>
 
 <p>This essentially overrides <code>config.js</code> but without showing the data to anyone outside the server.</p>
-<h3 id='whitelistingrepliesviathewebui'>Whitelisting replies via the Web UI</h3>
+<h3 id='whitelistingrepliesviathewebui'>Whitelisting replies via the Web UI<a href='#whitelistingrepliesviathewebui' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>To have Pony Mail accept replies done via the Web UI, you must make sure
 that <code>site/api/lib/config.lua</code> contains the appropriate string (or array of strings) matching the domain(s) you wish to allow new email for. To allow replies to everything, set this to <code>*</code>(NOT RECOMMENDED).
 You can also allow based on GLOBs or an array of accepted domains and sub-domains:</p>
@@ -183,7 +183,7 @@ You can also allow based on GLOBs or an array of accepted domains and sub-domain
     accepted_domains = { "foo.org", "*.foo.org" } -- Allow posts both to *.foo.org and foo.org
 </pre>
 
-<h3 id='settingemailfooters'>Setting email footers</h3>
+<h3 id='settingemailfooters'>Setting email footers<a href='#settingemailfooters' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>It is possible to set email footers in each email sent via the Web UI.
 This is done by configuring the <code>email_footer</code> variable in  <code>site/api/lib/config.lua</code>.
 You may use the following variables in the footer:</p>
@@ -204,7 +204,7 @@ You may use the following variables in the footer:</p>
     --------
 </pre>
 
-<h3 id='anoteonemailheaders'>A note on email headers</h3>
+<h3 id='anoteonemailheaders'>A note on email headers<a href='#anoteonemailheaders' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>By default, headers such as to/cc are not shown in the normal email view.
 To enable these headers, set <code>full_headers</code> to <code>true</code> in the <code>site/api/lib/config.lua</code> file.</p>
 <h4><a id="disclaimer"></a>Disclaimer</h4>
