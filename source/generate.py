@@ -23,10 +23,12 @@ def runDir(path):
             text = re.sub(r"([A-Z/]+)\.md", lambda x: x.group(1).lower() + ".html", text, flags =re.MULTILINE)
             html = markdown.markdown(text)
             # Convert h1-h6 into links
-            html = re.sub(r"<h([1-6])>(.+?)</h[1-6]>", lambda x: "<h%s id='%s'>%s</h%s>" % (
+            html = re.sub(r"<h([1-6])>(.+?)</h[1-6]>", lambda x:
+                "<h%s id='%s'>%s<a href='#%s' style='color: rgba(0,0,0,0);'>&para;</a></h%s>" % (
                 x.group(1),
                 re.sub(r"[^a-z0-9]+", "", x.group(2).lower()),
                 x.group(2),
+                re.sub(r"[^a-z0-9]+", "", x.group(2).lower()),
                 x.group(1)
                        )
                           , html)

@@ -4500,7 +4500,9 @@ img {
         width: 100%
     }
 }
-
+h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
+    color: rgba(70,70,50,1) !important;
+}
 #menubar {
     font-size: 20pt;
     background: #4e413a;
