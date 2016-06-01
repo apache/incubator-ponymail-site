@@ -207,6 +207,13 @@ You may use the following variables in the footer:</p>
 <h3 id='anoteonemailheaders'>A note on email headers<a href='#anoteonemailheaders' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>By default, headers such as to/cc are not shown in the normal email view.
 To enable these headers, set <code>full_headers</code> to <code>true</code> in the <code>site/api/lib/config.lua</code> file.</p>
+<h3 id='lastlyanoteaboutmessageidmidgenerators'>Lastly, a note about Message-ID (MID) generators<a href='#lastlyanoteaboutmessageidmidgenerators' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>The default MID generator is called 'medium' and digests the message
+body, timestamp and list-ID to generate the MID. There is also a 'short'
+that only digests the body, and a 'full' that uses the entire message as
+a bytestring to generate an ID. Medium is recommended for most setups
+(especially clustered setups), while full can be used for single-machine
+setups.</p>
 <h4><a id="disclaimer"></a>Disclaimer</h4>
 <p style="font-size: 8pt; line-height: 12pt;">
     <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px"/></a>
