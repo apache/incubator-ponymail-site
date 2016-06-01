@@ -33,7 +33,7 @@
         </ul>
     </div>
 </div>
-<h1>Importing Data to Pony Mail</h1>
+<h1 id='importingdatatoponymail'>Importing Data to Pony Mail</h1>
 <p>Pony Mail supports many ways of importing your old mail archives via the
 <code>import-mbox.py</code> script. For command line argument tips, run <code>python3
 import-mbox.py --help</code>.</p>
@@ -42,37 +42,37 @@ import from the same source multiple times without creating duplicate emails in
 the archive. Both the archiver and the importer use the same digest method, so
 they can overlap. Usually, you'll want to set up the archiver first, and when
 emails start flowing through it, you'll use the importer to import older emails.</p>
-<h2>Importing attachments</h2>
+<h2 id='importingattachments'>Importing attachments</h2>
 <p>If you wish to import attached files, add the <code>--attachments</code> flag to your import command, otherwise, attachments will be stripped.</p>
-<h2>Importing from mod_mbox</h2>
-<h3>Importing a single domain</h3>
+<h2 id='importingfrommodmbox'>Importing from mod_mbox</h2>
+<h3 id='importingasingledomain'>Importing a single domain</h3>
 <p>Provided you have the main mod_mbox page at https://your.tld/mod_mbox/ and your (sub)domain resources at
 https://your.tld/mod_mbox/$list-yourdomain/, you can import all lists from that domain using:</p>
 <p><code>python3 import-mbox.py --source https://your.tld/mod_mbox/ --mod-mbox --project yourdomain</code></p>
 <p>For a quick update, which only imports the last 2 months of mail, append then <code>--quick</code> flag.</p>
 <p>You can also import just a single list by specifying that list ID:</p>
 <p><code>python3 import-mbox.py --source https://your.tld/mod_mbox/ --mod-mbox --project listname-yourdomain</code></p>
-<h3>Importing an entire archive (multiple domains)</h3>
+<h3 id='importinganentirearchivemultipledomains'>Importing an entire archive (multiple domains)</h3>
 <p>To import an entire site, use the same command as above, but omit the <code>--project</code> flag</p>
 <p><code>python3 import-mbox.py --source https://your.tld/mod_mbox/ --mod-mbox</code></p>
-<h3>Setting the domain or list id properly in case of variance</h3>
+<h3 id='settingthedomainorlistidproperlyincaseofvariance'>Setting the domain or list id properly in case of variance</h3>
 <p>If your old archive varies in terms of list IDs across time, you can force harmonization by using the <code>--lid</code> or <code>--domain</code> flags:</p>
 <p><code>python3 import-mbox.py --source https://your.tld/mod_mbox/ --mod-mbox --project listid-yourdomain --lid "&lt;listid.youdomain.tld&gt;"</code></p>
 <p>This should only be done one list at a time.</p>
-<h2>Importing from Pipermail</h2>
+<h2 id='importingfrompipermail'>Importing from Pipermail</h2>
 <p>To import from pipermail, you will have to run the import one list at a time. As with mod_mbox imports, you must specify a source, but use <code>--pipermail</code> instead of <code>--mod-mbox</code>:</p>
 <p><code>python3 import-mbox.py --source https://your.tld/pipermail/foolist/ --pipermail</code></p>
-<h3>Pipermail and html-only emails</h3>
+<h3 id='pipermailandhtmlonlyemails'>Pipermail and html-only emails</h3>
 <p>While you can convert HTML-only emails to text using <code>--html2text</code>, Pipermail has some peculiarities
 where it adds a text/plain message to these emails, thus preventing html2text from working. You can
 circumvent this by using the <code>--ignorebody "foo"</code> arg to ignore all text/plain bodies containing <code>foo</code>.</p>
 <p>While the <code>project</code> flag is not needed here, you may wish to specify the list ID for the import.</p>
-<h2>Importing from locally stored mbox files</h2>
+<h2 id='importingfromlocallystoredmboxfiles'>Importing from locally stored mbox files</h2>
 <p>To import from one or more local mbox files, specify a filesystem path as the source:</p>
 <p><code>python3 import-mbox.py --source /tmp/mylists/ --attachments</code></p>
 <p>If you have a mix of mbox and non-mbox files in the specific dir, you may wish to let Pony Mail know which files to scan:</p>
 <p><code>python3 import-mbox.py --source /tmp/mylists/ --ext .mbox --attachments</code></p>
-<h2>Test archives</h2>
+<h2 id='testarchives'>Test archives</h2>
 <p>We have a few test archives for those that wish to test large imports.
 They can be found in gzip format at <a href="http://ponymail.info/mboxes/">http://ponymail.info/mboxes/</a></p>
 <h4><a id="disclaimer"></a>Disclaimer</h4>
