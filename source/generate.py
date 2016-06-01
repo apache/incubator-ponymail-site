@@ -22,6 +22,14 @@ def runDir(path):
             text = re.sub(r"~~~([\s\S]+?)~~~", "<pre>\\1</pre>", text, flags=re.MULTILINE)
             text = re.sub(r"([A-Z/]+)\.md", lambda x: x.group(1).lower() + ".html", text, flags =re.MULTILINE)
             html = markdown.markdown(text)
+            # Convert h1-h6 into links
+            html = re.sub(r"<h([1-6])>(.+?)</h[1-6]>", lambda x: "<h%s id='%s'>%s</h%s>" % (
+                x.group(1),
+                re.sub(r"[^a-z0-9]+", "", x.group(2).lower()),
+                x.group(2),
+                x.group(1)
+                       )
+                          , html)
             html = template.replace("%CONTENT%", html, 1)
             print("Writing %s..." % outfile)
             bpath = os.path.dirname(outfile)
