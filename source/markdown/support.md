@@ -35,3 +35,5 @@ Our primary communication interface is - you guessed it - mailing lists!<br/>
 </table>
 
 We are also on IRC, if you fancy a quick chat. You can find us in #PonyMail on Freenode.
+
+Security issues and inquiries should be sent to: security@apache.org
