@@ -1289,8 +1289,7 @@ body {
     max-width: 1000px;
     margin: 0px auto;
     padding: 10px;
-    border-left: 4px solid #666;
-    border-right: 4px solid #666;
+    border: 4px solid #666;
 }
 
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
