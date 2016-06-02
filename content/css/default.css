@@ -1281,11 +1281,11 @@ button.close {
 html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    background: #333;
+    background: #96C0CE;
 }
 
 body {
-    background: #eae2dc;
+    background: #FEF6EB;
     max-width: 1000px;
     margin: 0px auto;
     padding: 10px;
@@ -1608,7 +1608,7 @@ h6 {
 
 a {
     cursor: pointer;
-    color: #D5377B;
+    color: #C25B56;
     text-decoration: none
 }
 
@@ -4505,7 +4505,7 @@ h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
 }
 #menubar {
     font-size: 20pt;
-    background: #4e413a;
+    background: #74828F;
     padding-top: 5px;
 }
 #menubar ul {
@@ -4539,4 +4539,11 @@ h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
 #menubar a:hover {
     color: #FF7;
     text-shadow: 0px 0px 1px rgba(255,150,50,0.75);
+}
+#titlebar {
+    margin: -10px;
+    background: #525564;
+    color: #EEE;
+    margin-bottom: 20px;
+    text-align: center;
 }
