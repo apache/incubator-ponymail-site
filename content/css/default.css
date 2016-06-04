@@ -1278,20 +1278,6 @@ button.close {
     box-sizing: border-box
 }
 
-html {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    background: #96C0CE;
-}
-
-body {
-    background: #FEF6EB;
-    max-width: 1000px;
-    margin: 0px auto;
-    padding: 10px;
-    border: 4px solid #666;
-}
-
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
     display: block
 }
@@ -4545,4 +4531,21 @@ h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
     color: #EEE;
     margin-bottom: 20px;
     text-align: center;
+}
+
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    background: #222;
+}
+
+body {
+    background: #FEF6EB;
+    max-width: 1000px;
+    margin: 10px auto;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+    padding: 10px;
+    border: 6px solid #999;
+    border-radius: 8px;
 }
