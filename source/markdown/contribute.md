@@ -4,6 +4,16 @@ We'd LOVE if more people would contribute to Pony Mail!
 Any form of contribution is most welcome, whether it be programming,
 documentation, evangelism, marketing, or helping out other users.
 
+## Source code and issue tracker ##
+
+Our canonical source repository is at: [https://git-wip-us.apache.org/repos/asf/incubator-ponymail.git](https://git-wip-us.apache.org/repos/asf/incubator-ponymail.git)
+
+We also have a GitHub mirror at: [https://github.com/apache/incubator-ponymail](https://github.com/apache/incubator-ponymail)
+
+We currently use GitHub Issues for tracking bugs and improvements: [https://github.com/apache/incubator-ponymail/issues](https://github.com/apache/incubator-ponymail/issues)
+
+## Contributing guideline ##
+
 To contribute to Pony Mail, follow these steps:
 
 - [Fork the repo](/source.html)
