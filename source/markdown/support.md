@@ -1,5 +1,7 @@
 # Getting Support
 
+
+## Mailing lists ##
 Our primary communication interface is - you guessed it - mailing lists!<br/>
     We have a number of mailing lists for various purposes:<br/>
 
@@ -34,6 +36,11 @@ Our primary communication interface is - you guessed it - mailing lists!<br/>
     </tr>
 </table>
 
+## Issue tracker ##
+We currently use GitHub Issues for tracking bugs and improvements: [https://github.com/apache/incubator-ponymail/issues](https://github.com/apache/incubator-ponymail/issues)
+
+## IRC ##
 We are also on IRC, if you fancy a quick chat. You can find us in #PonyMail on Freenode.
 
+## Security issues ##
 Security issues and inquiries should be sent to: security@apache.org
