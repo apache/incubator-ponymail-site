@@ -19,3 +19,6 @@ For a quick guide to installing Apache Pony Mail, please see the guides for:
 5. Add Pony Mail as an archiver for your lists. [see this doc](/docs/archiving.html).
 6. import mbox data with import-mbox.py if need be (see [this doc](/docs/importing.html) for details)
 7. All done :) But please see the [detailed installation instructions](/docs/installing.html) for more details
+
+
+
