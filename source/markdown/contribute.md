@@ -20,9 +20,9 @@ To contribute to Pony Mail, follow these steps:
 - Subscribe to the Pony Mail dev list:
 - - Either send an email to dev-subscribe@ponymail.incubator.apache.org OR
 - - Visit [https://lists.apache.org/list.html?dev@ponymail.apache.org](https://lists.apache.org/list.html?dev@ponymail.apache.org) (You can use Persona or ASF OAuth)
-- Find something to fix or help out with
+- Find something to fix or help out with.
 - Let us know what you want to do by opening an issue or a pull request.
-- Join us on #ponymail on the Freenode IRC network
+- Join us on #ponymail on the Freenode IRC network.
 
 ## Git Workflow
 The following workflow is adapted from the [jClouds workflow](https://cwiki.apache.org/confluence/display/JCLOUDS/Git+workflow):
