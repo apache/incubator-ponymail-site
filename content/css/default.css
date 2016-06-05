@@ -4490,7 +4490,7 @@ h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
 }
 #menubar {
     font-size: 20pt;
-    background: #444;
+    background: #404049;
     padding-top: 5px;
 }
 #menubar ul {
@@ -4541,10 +4541,10 @@ h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
 }
 #titlebar {
     margin: -10px;
-    background: #444;
     color: #EEE;
     margin-bottom: 20px;
     text-align: center;
+    background: #404049;
 }
 
 
