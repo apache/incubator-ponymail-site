@@ -1,3 +1,6 @@
+NOTE: This is now handled by the buildbot, you only need to change the markdown
+      files and the buildbot will regenerate the site and publish it.
+      
 # Building the web site
 
 * Install the markdown module for Python 3: sudo pip3 install markdown
