@@ -2,7 +2,7 @@
 (Optionally see the [detailed installation instructions](/docs/installing.html) for more information)
 
 #### Supported Linux Distributions ####
-For a quick guide to installing Pony Mail, please see the guides for:
+For a quick guide to installing Apache Pony Mail, please see the guides for:
 
 *  [Debian (Jessie) Installation Instructions](/docs/install.debian.html)
 *  [Ubuntu (14.04) Installation Instructions](/docs/install.ubuntu.html)
