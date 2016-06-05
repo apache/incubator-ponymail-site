@@ -4490,7 +4490,7 @@ h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
 }
 #menubar {
     font-size: 20pt;
-    background: #74828F;
+    background: #444;
     padding-top: 5px;
 }
 #menubar ul {
@@ -4516,18 +4516,32 @@ h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
 #menubar span {
     font-size: 10pt;
     font-family: cursive;
-    color: #FFD;
 }
 #menubar a {
-    color: #FFA;
+    color: #FF7;
+    margin-bottom: 3px;
+    display: inline-block;
+    height: 48px;
+    padding-top: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 5px;
 }
 #menubar a:hover {
-    color: #FF7;
-    text-shadow: 0px 0px 1px rgba(255,150,50,0.75);
+    color: #4F4;
+    border-radius: 5px;
+    border: 1px outset #222;
+    display: inline-block;
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    background: #222;
+    transition: all 0.15s;
+    
 }
 #titlebar {
     margin: -10px;
-    background: #525564;
+    background: #444;
     color: #EEE;
     margin-bottom: 20px;
     text-align: center;
