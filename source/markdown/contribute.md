@@ -92,4 +92,3 @@ up to date with the latest master changes anyway, always rebase it;
 don't git pull or introduce merge commits, as it will complicate the
 rebasing process and will make it difficult to merge the pull request in
 a clean way
-
