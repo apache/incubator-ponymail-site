@@ -1,21 +1,29 @@
 Apache Pony Mail (Incubating) is a web-based mail archive browser
-licensed under the Apache License v/2.0 and built to scale 
-to millions of archived messages with hundreds of requests 
-per second.
+built to scale to millions of archived messages with hundreds of requests
+per second.  It allows you to browse, search, and interact with mailing lists
+including creating replies to mailing list threads.
 
-Pony Mail allows you to browse and interact with mailing lists 
-using Mozilla Persona or OAuth2 (Google, GitHub, Facebook etc) for authentication.
+Apache Pony Mail uses Mozilla Persona or OAuth2 (Google, GitHub,
+Facebook etc) for authentication to allow viewing private lists, and uses
+ElasticSearch for storage and searching.  Licensed under the Apache License 2.0
+and undergoing Incubation at the Apache Software Foundation (ASF).
 
+### Sample Screenshot ###
 ![Ponies](images/demo.png)
+
+### Pony Mail includes rich visualizations ###
 
 ![Trends](images/demo_trends.png)
 
+### You can also run simple n-gram analyses of list content ###
+
 ![N-grams](images/demo_ngrams.png)
 
-See [https://lists.apache.org.org](https://lists.apache.org) for a demo.
+See [https://lists.apache.org.org](https://lists.apache.org) for a live demo;
+Pony Mail is currently running on the full mail archives of all Apache projects.
 
-Pony Mail works in both public, private and mixed-mode, allowing you 
-to have one unified place for all your communication, both public and 
+Pony Mail works in both public, private and mixed-mode, allowing you
+to have one unified place for all your communication, both public and
 private.
 
 
@@ -64,8 +72,7 @@ list size and available bandwidth.
 ### TODO: ###
 This is a list of what we would love to get done:
 
-* Start on documentation (WIP)
+* Start on the [project's documentation](https://github.com/apache/incubator-ponymail-site) (WIP)
 * Rework JS, turn those ugly innerHTML hacks into proper DOM handling
 * Set up notification system (depends on reply system) (works, but still *WIP!*)
 * Have it work with ES with auth mode or via HTTPS
-
