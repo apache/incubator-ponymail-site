@@ -17,7 +17,7 @@ sudo apt-get install apache2 git liblua5.2-dev lua-cjson lua-sec lua-socket pyth
 
 Install the required Python 3 modules:
 ~~~
-sudo pip3 install elasticsearch formatflowed netaddr
+sudo pip3 install elasticsearch formatflowed netaddr chardet
 ~~~
 
 Install ElasticSearch:
@@ -32,8 +32,8 @@ sudo apt-get update && sudo apt-get install elasticsearch
 Compile and install mod_lua if necessary (httpd < 2.4.17 on Ubuntu):
 ~~~
 apt-get install apache2-dev
-svn co https://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/modules/lua/
-cd lua/
+svn co https://svn.apache.org/repos/asf/httpd/httpd/branches/2.4.x/modules/lua/ /tmp/lua
+cd /tmp/lua/
 apxs -I/usr/include/lua5.2 -cia mod_lua.c lua_*.c -lm -llua5.2
 ~~~
 
@@ -41,7 +41,7 @@ apxs -I/usr/include/lua5.2 -cia mod_lua.c lua_*.c -lm -llua5.2
 Check out a copy of Pony Mail:
 ~~~
 cd /var/www
-git clone https://github.com/apache/incubator-ponymail.git
+git clone https://github.com/apache/incubator-ponymail.git ponymail
 ~~~
 
 Configure Elasticsearch to automatically start during bootup. For Ubuntu <= 14.10:
