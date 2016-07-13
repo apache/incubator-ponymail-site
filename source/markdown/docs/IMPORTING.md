@@ -24,7 +24,7 @@ For a quick update, which only imports the last 2 months of mail, append then `-
 
 You can also import just a single list by specifying that list ID:
 
-`python3 import-mbox.py --source https://your.tld/mod_mbox/ --mod-mbox --project listname-yourdomain`
+`python3 import-mbox.py --source https://your.tld/mod_mbox/ --mod-mbox --project yourdomain-listname`
 
 ### Importing an entire archive (multiple domains)
 To import an entire site, use the same command as above, but omit the `--project` flag
