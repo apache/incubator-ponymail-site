@@ -2,7 +2,7 @@
 
 The latest release of Pony Mail is 0.9, released on 2016-08-02. You can fetch it here:
 
-[Download Apache Pony Mail (Incubating) 0.9 from a mirror](/closer.cgi/incubator/ponymail/apache-pony-mail-0.9.incubating.tar.gz)
+[Download Apache Pony Mail (Incubating) 0.9 from a mirror](/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.9.incubating.tar.gz)
 
 ## CHANGES in 0.9:
 
