@@ -43,6 +43,7 @@ people (at least, anecdotally, it does) and if we can remove that
 barrier I think we'll have an easier time of drawing a new generation
 into our projects.
 
+
 ### Who are we?
 
 We're a small bunch of people committed to making mailing list interaction as easy as possible.<br/>
