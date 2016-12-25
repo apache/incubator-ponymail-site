@@ -55,8 +55,8 @@ We're a small bunch of people committed to making mailing list interaction as ea
      <li>Jim Jagielski / jimjag - committer</li>
      <li>John D. Ament / johndament - mentor</li>
      <li>Rich Bowen / rbowen - committer</li>
-     <li>Sebastian Bazley / sebb - committer</li>
      <li>Sam Ruby / rubys - committer</li>
+     <li>Sebastian Bazley / sebb - committer</li>
      <li>Shane Curcu / curcuru - committer</li>
      <li>Tony Stevenson / pctony - committer</li>
      <li>Ulises Cerviño Beresi / ucb - committer</li>
