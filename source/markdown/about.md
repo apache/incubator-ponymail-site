@@ -58,4 +58,5 @@ We're a small bunch of people committed to making mailing list interaction as ea
      <li>Shane Curcu / curcuru - committer</li>
      <li>Tony Stevenson / pctony - committer</li>
      <li>Ulises Cerviño Beresi / ucb - committer</li>
+     <li>Sebastian Bazley / sebb - committer</li>
  </ul>
