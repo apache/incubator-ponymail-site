@@ -3,10 +3,11 @@
 ### Fetching a specific email:
 
 Usage:
-`GET /api/email.lua?id=$mid`
+`GET /api/email.lua?id=$mid[&attachment=true&file=$hash]`
 
 Parameters: (cookie may be required)
   - $mid: The email ID or Message-ID: header
+  - $hash: the file attachment hash
 
 Response example:
 
@@ -37,18 +38,23 @@ Response example:
 
 ### Fetching list data
 Usage:
-`GET /api/stats.lua?list=$list&domain=$domain[&d=$timespan][&q=$query][&header_from=$from][&header_subject=$subject]`
+`GET /api/stats.lua?list=$list&domain=$domain[&d=$timespan][&q=$query][&header_from=$from][&header_to=$to][&header_subject=$subject][&header_body=$body][&quick][&s=$s&e=$e]`
 
 Parameters:
+
     - $list: The list prefix (e.g. `dev`). Wildcards may be used
     - $domain: The list domain (e.g. `httpd.apache.org`). Wildcards may be used
     - $timespan: A [timespan](#Timespans) value
+    - $s: yyyy-mm start of month (day 1)
+    - $e: yyyy-mm end of month (last day)
     - $query: A search query (may contain wildcards or negations):
       - `foo`: Find all documents containing `foo` in headers or body
       - `-foo`: Find all documents NOT containing `foo`.
       - `foo*`: Find all documents containing `foo`, `fooa`, `foob` etc
     - $from: Optional From: address
+    - $to: Optional To: address
     - $subject: Optional Subject: line
+    - $body: Optional body text
     
 Response example:
 
@@ -56,10 +62,30 @@ Response example:
 {
     "took": 437179,
     "firstYear": 2015,
-    "emails": {...},
+    "emails": {
+        {
+            "list_raw": "<dev.ponymail.apache.org>",
+            "gravatar": "66cf545ca7a1b8f595282bb9d8a59657",
+            "id": "b1d6446f5cc8f4846454cbabc48ddb08afbb601a77169f8e32e34102@<dev.ponymail.apache.org>",
+            "epoch": 1474883100,
+            "subject": "Re: Missing tag for 0.9 release",
+            "message-id": "<7f249f5e-e422-68a5-d57f-bfce585e638e@apache.org>",
+            "private": false,
+            "irt": "<CAOGo0VYrCOR=820LSDZA=czc==SOwCaRKasaEvVuxtUEXp9SDQ@mail.gmail.com>",
+            "from": "Daniel Gruno <h...@apache.org>",
+            "attachments": 0
+        },...
+    },
     "no_threads": 10,
     "domain": "ponymail.info",
-    "participants": {...},
+    "participants": {
+        {
+            "count": 3,
+            "name": "Daniel Gruno",
+            "gravatar": "66cf545ca7a1b8f595282bb9d8a59657",
+            "email": "hu...@apache.org"
+        }, ...
+    },
     "lastYear": 2015,
     "name": "dev",
     "cloud": {...},
@@ -73,13 +99,31 @@ Response example:
 }
 ~~~
 
+### <a name="Timespans"></a>Timespans
+
+Timespans supported by the &d= parameter.
+
+    - d=yyyy-mm => equivalent to &s=yyyy-mm&e=yyyy-mm
+    - d=lte=n[wMyd] (less than n[wMyd] ago, inclusive)
+    - d=gte=n[wMyd] (more than n[wMyd] ago, inclusive)
+    - d=.*dfr=yyyy-mm-dd.* (start date for search, inclusive)
+    - d=.*dto=yyyy-mm-dd.* (end date for search, inclusive)
+    - [wMyd] = weeks, Months, years, days
+    - lte and gte are mutually exclusive
+    - dfr and dto are normally both present
 
 ### Fetching preferences and quick list overview
 Usage:
-`GET /api/preferences.lua[?logout=true]`
+`GET /api/preferences.lua[?logout][?associate=$email][?verify&hash=$hash][?removealt=$email][?save][?addfav=$list][?remfav=$list]`
 
 Parameters: (cookie required)
   - logout: Whether to log out of the system (optional)
+  - associate=$email - associate the account with the $email address
+  - verify&hash=$hash - verify an association request $hash
+  - removealt=$email - remove an alternate $email address
+  - save - save preferences
+  - addfav=$list - add a favourite $list
+  - remfav=$list - remove a favourite $list
 
 
 Response example:
@@ -130,5 +174,15 @@ Response example:
 {
     "notifications": {...}
 }
+~~~
+
+### Fetching a month's data as an mbox file
+Usage:
+`GET /api/mbox.lua?list=issues@ponymail.apache.org&date=2016-06`
+
+Response example:
+
+~~~
+TBA
 ~~~
 
