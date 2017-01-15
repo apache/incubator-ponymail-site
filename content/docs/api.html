@@ -38,9 +38,10 @@
 <h1 id='ponymailarchiveapi'>Pony Mail Archive API<a href='#ponymailarchiveapi' style='color: rgba(0,0,0,0);'>&para;</a></h1>
 <h3 id='fetchingaspecificemail'>Fetching a specific email:<a href='#fetchingaspecificemail' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Usage:
-<code>GET /api/email.lua?id=$mid</code></p>
+<code>GET /api/email.lua?id=$mid[&amp;attachment=true&amp;file=$hash]</code></p>
 <p>Parameters: (cookie may be required)
-  - $mid: The email ID or Message-ID: header</p>
+  - $mid: The email ID or Message-ID: header
+  - $hash: the file attachment hash</p>
 <p>Response example:</p>
 <pre>
 {
@@ -68,26 +69,51 @@
 
 <h3 id='fetchinglistdata'>Fetching list data<a href='#fetchinglistdata' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Usage:
-<code>GET /api/stats.lua?list=$list&amp;domain=$domain[&amp;d=$timespan][&amp;q=$query][&amp;header_from=$from][&amp;header_subject=$subject]</code></p>
-<p>Parameters:
-    - $list: The list prefix (e.g. <code>dev</code>). Wildcards may be used
-    - $domain: The list domain (e.g. <code>httpd.apache.org</code>). Wildcards may be used
-    - $timespan: A <a href="#Timespans">timespan</a> value
-    - $query: A search query (may contain wildcards or negations):
-      - <code>foo</code>: Find all documents containing <code>foo</code> in headers or body
-      - <code>-foo</code>: Find all documents NOT containing <code>foo</code>.
-      - <code>foo*</code>: Find all documents containing <code>foo</code>, <code>fooa</code>, <code>foob</code> etc
-    - $from: Optional From: address
-    - $subject: Optional Subject: line</p>
+<code>GET /api/stats.lua?list=$list&amp;domain=$domain[&amp;d=$timespan][&amp;q=$query][&amp;header_from=$from][&amp;header_to=$to][&amp;header_subject=$subject][&amp;header_body=$body][&amp;quick][&amp;s=$s&amp;e=$e]</code></p>
+<p>Parameters:</p>
+<pre><code>- $list: The list prefix (e.g. `dev`). Wildcards may be used
+- $domain: The list domain (e.g. `httpd.apache.org`). Wildcards may be used
+- $timespan: A [timespan](#Timespans) value
+- $s: yyyy-mm start of month (day 1)
+- $e: yyyy-mm end of month (last day)
+- $query: A search query (may contain wildcards or negations):
+  - `foo`: Find all documents containing `foo` in headers or body
+  - `-foo`: Find all documents NOT containing `foo`.
+  - `foo*`: Find all documents containing `foo`, `fooa`, `foob` etc
+- $from: Optional From: address
+- $to: Optional To: address
+- $subject: Optional Subject: line
+- $body: Optional body text
+</code></pre>
 <p>Response example:</p>
 <pre>
 {
     "took": 437179,
     "firstYear": 2015,
-    "emails": {...},
+    "emails": {
+        {
+            "list_raw": "<dev.ponymail.apache.org>",
+            "gravatar": "66cf545ca7a1b8f595282bb9d8a59657",
+            "id": "b1d6446f5cc8f4846454cbabc48ddb08afbb601a77169f8e32e34102@<dev.ponymail.apache.org>",
+            "epoch": 1474883100,
+            "subject": "Re: Missing tag for 0.9 release",
+            "message-id": "<7f249f5e-e422-68a5-d57f-bfce585e638e@apache.org>",
+            "private": false,
+            "irt": "<CAOGo0VYrCOR=820LSDZA=czc==SOwCaRKasaEvVuxtUEXp9SDQ@mail.gmail.com>",
+            "from": "Daniel Gruno <h...@apache.org>",
+            "attachments": 0
+        },...
+    },
     "no_threads": 10,
     "domain": "ponymail.info",
-    "participants": {...},
+    "participants": {
+        {
+            "count": 3,
+            "name": "Daniel Gruno",
+            "gravatar": "66cf545ca7a1b8f595282bb9d8a59657",
+            "email": "hu...@apache.org"
+        }, ...
+    },
     "lastYear": 2015,
     "name": "dev",
     "cloud": {...},
@@ -101,11 +127,28 @@
 }
 </pre>
 
+<h3 id='anametimespansatimespans'><a name="Timespans"></a>Timespans<a href='#anametimespansatimespans' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>Timespans supported by the &amp;d= parameter.</p>
+<pre><code>- d=yyyy-mm =&gt; equivalent to &amp;s=yyyy-mm&amp;e=yyyy-mm
+- d=lte=n[wMyd] (less than n[wMyd] ago, inclusive)
+- d=gte=n[wMyd] (more than n[wMyd] ago, inclusive)
+- d=.*dfr=yyyy-mm-dd.* (start date for search, inclusive)
+- d=.*dto=yyyy-mm-dd.* (end date for search, inclusive)
+- [wMyd] = weeks, Months, years, days
+- lte and gte are mutually exclusive
+- dfr and dto are normally both present
+</code></pre>
 <h3 id='fetchingpreferencesandquicklistoverview'>Fetching preferences and quick list overview<a href='#fetchingpreferencesandquicklistoverview' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Usage:
-<code>GET /api/preferences.lua[?logout=true]</code></p>
+<code>GET /api/preferences.lua[?logout][?associate=$email][?verify&amp;hash=$hash][?removealt=$email][?save][?addfav=$list][?remfav=$list]</code></p>
 <p>Parameters: (cookie required)
-  - logout: Whether to log out of the system (optional)</p>
+  - logout: Whether to log out of the system (optional)
+  - associate=$email - associate the account with the $email address
+  - verify&amp;hash=$hash - verify an association request $hash
+  - removealt=$email - remove an alternate $email address
+  - save - save preferences
+  - addfav=$list - add a favourite $list
+  - remfav=$list - remove a favourite $list</p>
 <p>Response example:</p>
 <pre>
 {
@@ -148,6 +191,14 @@
 {
     "notifications": {...}
 }
+</pre>
+
+<h3 id='fetchingamonthsdataasanmboxfile'>Fetching a month's data as an mbox file<a href='#fetchingamonthsdataasanmboxfile' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>Usage:
+<code>GET /api/mbox.lua?list=issues@ponymail.apache.org&amp;date=2016-06</code></p>
+<p>Response example:</p>
+<pre>
+TBA
 </pre>
 <h4><a id="disclaimer"></a>Disclaimer</h4>
 <p style="line-height: 12pt;">
