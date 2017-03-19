@@ -55,18 +55,17 @@ into our projects.
 
 ### Who are we?
 
-We're a small bunch of Apache committers committed to making mailing list interaction as easy as possible.<br/>
- Currently, we consist of (in alphabetical order):<br/>
- <ul>
-     <li>Andrew Bayer / abayer - _mentor_</li>
-     <li>Daniel Gruno / humbedooh - committer</li>
-     <li>Francesco Chicchiriccò / ilgrosso - committer</li>
-     <li>Jim Jagielski / jimjag - committer</li>
-     <li>John D. Ament / johndament - _mentor_</li>
-     <li>Rich Bowen / rbowen - committer</li>
-     <li>Sam Ruby / rubys - committer</li>
-     <li>Sebastian Bazley / sebb - committer</li>
-     <li>Shane Curcuru / curcuru - committer</li>
-     <li>Tony Stevenson / pctony - committer</li>
-     <li>Ulises Cerviño Beresi / ucb - committer</li>
- </ul>
+We're a small bunch of Apache committers committed to making mailing list interaction as easy as possible.
+Currently, we consist of (in alphabetical order - by first name):
+ - Andrew Bayer / abayer - _mentor_
+ - Daniel Gruno / humbedooh - committer
+ - Francesco Chicchiriccò / ilgrosso - committer
+ - Jim Jagielski / jimjag - committer
+ - John D. Ament / johndament - _mentor_
+ - Rich Bowen / rbowen - committer
+ - Sam Ruby / rubys - committer
+ - Sebastian Bazley / sebb - committer
+ - Shane Curcuru / curcuru - committer
+ - Tony Stevenson / pctony - committer
+ - Ulises Cerviño Beresi / ucb - committer
+
