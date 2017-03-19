@@ -1,4 +1,11 @@
-# About Pony Mail and its Contributors
+# About The Apache Pony Mail Project and its Contributors
+
+### Pony Mail - Mail Archiving, Ponified!
+
+Apache Pony Mail (Incubating) is a new web-based mailing list archive with 
+both strong searching and browsing features, and includes the ability to 
+reply within a thread from your web browser.  It is currently deployed 
+to provide an archive for all Apache Software Foundation mailing lists.
 
 ### Background
 Pony Mail began as a response to two things; the lack of diversity in
@@ -9,7 +16,7 @@ of software want to jump right into a discussion they see, but cannot
 normally do so in a mailing list driven environment because of the rules
 generally surrounding said environment. Pony Mail, along with a select
 handful of newer archive systems, provides an interface that allows
-people to just hop into a thread, and take part. Without the need to
+people to just hop into a thread, and take part from their web browser. Without the need to
 subscribe, download the mbox archive, load it into your MTA, and
 respond.
 
@@ -30,11 +37,13 @@ mailing lists are an old person's tool, and web-based communication -
 forums - are the way to go in the 21st Century. Providing a
 full-featured forum-like interface to mailing lists is one goal,while
 keeping all of the enormous benefits that mailing lists already provide.
-Asecond goal is to provide the ability to "jump in" to a mailing list
+A second goal is to provide the ability to "jump in" to a mailing list
 conversation - even one that was a while back, without the convolutions
-that a mailing list requires. That is, to join this conversation the old
+that a mailing list requires. 
+
+That is, to join this pre-existing conversation the old
 way, one would have had to subscribe to the mailing list, download an
-mbox, and import it into ones mail client, in order that I be able to
+mbox (or ask the archive software for a copy), and import it into ones mail client, in order that I be able to
 reply to this message with correct threading. With Pony Mail, one has to
 do none of those things, but can simply reply using the Web UI. To us,
 this is a HUGE benefit for building community. The requirement to jump
@@ -46,18 +55,18 @@ into our projects.
 
 ### Who are we?
 
-We're a small bunch of people committed to making mailing list interaction as easy as possible.<br/>
+We're a small bunch of Apache committers committed to making mailing list interaction as easy as possible.<br/>
  Currently, we consist of (in alphabetical order):<br/>
  <ul>
-     <li>Andrew Bayer / abayer - mentor</li>
+     <li>Andrew Bayer / abayer - _mentor_</li>
      <li>Daniel Gruno / humbedooh - committer</li>
      <li>Francesco Chicchiriccò / ilgrosso - committer</li>
      <li>Jim Jagielski / jimjag - committer</li>
-     <li>John D. Ament / johndament - mentor</li>
+     <li>John D. Ament / johndament - _mentor_</li>
      <li>Rich Bowen / rbowen - committer</li>
      <li>Sam Ruby / rubys - committer</li>
      <li>Sebastian Bazley / sebb - committer</li>
-     <li>Shane Curcu / curcuru - committer</li>
+     <li>Shane Curcuru / curcuru - committer</li>
      <li>Tony Stevenson / pctony - committer</li>
      <li>Ulises Cerviño Beresi / ucb - committer</li>
  </ul>
