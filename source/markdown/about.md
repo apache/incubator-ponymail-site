@@ -43,6 +43,7 @@ people (at least, anecdotally, it does) and if we can remove that
 barrier I think we'll have an easier time of drawing a new generation
 into our projects.
 
+
 ### Who are we?
 
 We're a small bunch of people committed to making mailing list interaction as easy as possible.<br/>
@@ -55,6 +56,7 @@ We're a small bunch of people committed to making mailing list interaction as ea
      <li>John D. Ament / johndament - mentor</li>
      <li>Rich Bowen / rbowen - committer</li>
      <li>Sam Ruby / rubys - committer</li>
+     <li>Sebastian Bazley / sebb - committer</li>
      <li>Shane Curcu / curcuru - committer</li>
      <li>Tony Stevenson / pctony - committer</li>
      <li>Ulises Cerviño Beresi / ucb - committer</li>

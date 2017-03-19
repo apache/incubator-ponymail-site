@@ -48,10 +48,11 @@ for detailed package installation instructions:</p>
 <h2 id='prerequisites'>Pre-requisites<a href='#prerequisites' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>You will need the following software installed on your machine:</p>
 <ul>
-<li>ElasticSearch &gt;= 1.3 (2.0 should also work just fine)</li>
+<li>ElasticSearch &gt;= 2.1</li>
 <li>Python 3.x for the archiver plugin (setup.py will handle dependencies) and importer</li>
 <li>Apache HTTP Server 2.4.x with mod_lua (see http://modlua.org/gs/installing if you need to build mod_lua manually)</li>
-<li>Lua &gt;=5.1 with the following modules: cjson, luasec, luasocket</li>
+<li>Lua &gt;=5.1 with the following modules: cjson, luasec, luasocket
+  (Note: Lua 5.3 is not currently supported by httpd mod_lua or luasocket)</li>
 </ul>
 <h2 id='downloadandinstall'>Download and Install<a href='#downloadandinstall' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <ul>
@@ -121,15 +122,8 @@ the --private arg to the python script to mark an email as private:
 - Mark entire lists are private or public</p>
 <p>Run <code>python3 edit-list.py --help</code> for CLI args.</p>
 <h2 id='settingupoauthforponymail'>Setting up OAuth for Pony Mail<a href='#settingupoauthforponymail' style='color: rgba(0,0,0,0);'>&para;</a></h2>
-<p>If you want people to be able to log in and reply via the Web UI, you can either
-use the default Persona login (works for all email addresses) or specify an
-OAuth provider.</p>
-<h3 id='settingupordisablingpersona'>Setting up or disabling Persona<a href='#settingupordisablingpersona' style='color: rgba(0,0,0,0);'>&para;</a></h3>
-<p>Persona is enabled by default, as it's a fast and convenient way to enable
-logins for <em>public</em> lists. Should you wish to disable Persona, set the
-<code>enabled</code> variable to <code>false</code> in the persona section of <code>site/js/config.js</code>.
-Persona will only ever work for public lists. For private lists, you will need
-to specify and implement an OAuth provider.</p>
+<p>If you want people to be able to log in and reply via the Web UI, you
+can specify an OAuth provider.</p>
 <h3 id='settingupanoauthprovider'>Setting up an OAuth provider<a href='#settingupanoauthprovider' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Pony Mail comes with a few default OAuth examples in <code>site/js/config.js</code>, such
 as ASF Oauth and Google OAuth. You can enable these by uncommenting the lines in
@@ -215,10 +209,11 @@ body, timestamp and list-ID to generate the MID. There is also a 'short'
 that only digests the body, and a 'full' that uses the entire message as
 a bytestring to generate an ID. Medium is recommended for most setups
 (especially clustered setups), while full can be used for single-machine
-setups.</p>
+setups.
+N.B. At present, all the generators have issues, see (#176 #177 #178)</p>
 <h4><a id="disclaimer"></a>Disclaimer</h4>
-<p style="font-size: 8pt; line-height: 12pt;">
-    <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px"/></a>
+<p style="line-height: 12pt;">
+    <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px" style="margin-left: 6px;"/></a>
     Apache Pony Mail (Incubating) is an effort undergoing incubation at
     The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
     Apache Incubator</a>. Incubation is required of all newly accepted projects
@@ -229,7 +224,7 @@ setups.</p>
     completeness or stability of the code, it does indicate that the
     project has yet to be fully endorsed by the ASF.
 </p>
-<p style="font-size: 8pt; line-height: 12pt;">
+<p style="font-size: 9pt; line-height: 12pt; text-align: center;">
     Copyright 2016, the <a href="http://www.apache.org/">Apache Software Foundation</a>.<br/>
     Apache Pony Mail and the Apache Pony Mail logo are trademarks of the Apache Software Foundation.
     Apache and the Apache feather are registered trademarks of the

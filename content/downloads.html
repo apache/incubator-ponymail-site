@@ -35,16 +35,32 @@
         </ul>
     </div>
 </div>
-<h1 id='downloadponymail'>Download Pony Mail<a href='#downloadponymail' style='color: rgba(0,0,0,0);'>&para;</a></h1>
-<p>While we do not have any official Apache releases yet, you may check out
-previous non-Apache releases on our GitHub repo, at
-<a href="https://github.com/apache/incubator-ponymail/releases">https://github.com/apache/incubator-ponymail/releases</a>.</p>
-<p>While these are all Apache License v/2-approved, they have not gone
-through the traditional Apache release process, and as such, are not
-officially endorsed by the Apache Pony Mail project in any way.</p>
+<h1 id='downloadapacheponymailincubating'>Download Apache Pony Mail (Incubating)<a href='#downloadapacheponymailincubating' style='color: rgba(0,0,0,0);'>&para;</a></h1>
+<p>The latest release of Pony Mail is 0.9, released on 2016-08-02. You can fetch it here:</p>
+<p><a href="/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.9.incubating.tar.gz">Download Apache Pony Mail (Incubating) 0.9 from a mirror</a></p>
+<h2 id='changesin09'>CHANGES in 0.9:<a href='#changesin09' style='color: rgba(0,0,0,0);'>&para;</a></h2>
+<ul>
+<li>Private lists can be hidden in the index from users without access</li>
+<li>Fixed an issue where LocalStorage limits would break the site</li>
+<li>Fixed an issue with gravatars not showing up</li>
+<li>UI can now auto-scale, allowing as many results per page as screen height will support</li>
+<li>Users can add favorite lists to their user menu (shortcuts)</li>
+<li>Reply-to and compose now works from the permalink page</li>
+<li>Archiver can now set an explicit List ID from command-line</li>
+<li>Archiver and importer can now do on-the-fly regex List ID replacement</li>
+<li>Increased import parsing timeout from 2 to 6 minutes per mbox file</li>
+<li>Private emails are now more clearly marked as such in the UI</li>
+<li>Logging in via OAuth now remembers where you left off</li>
+<li>Added support for Maildir imports</li>
+<li>Added three distinct Message-ID generators (short, medium, full)</li>
+<li>Fixed some issues with email association</li>
+<li>Added obfuscation mechanism to the list editor</li>
+<li>Added a dry-run feature to the list editor (no changes made)</li>
+<li>Added a single-message edit feature for the liste editor</li>
+</ul>
 <h4><a id="disclaimer"></a>Disclaimer</h4>
-<p style="font-size: 8pt; line-height: 12pt;">
-    <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px"/></a>
+<p style="line-height: 12pt;">
+    <a href="https://incubator.apache.org"><img src="/images/podling.svg" align="right" width="220px" style="margin-left: 6px;"/></a>
     Apache Pony Mail (Incubating) is an effort undergoing incubation at
     The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
     Apache Incubator</a>. Incubation is required of all newly accepted projects
@@ -55,7 +71,7 @@ officially endorsed by the Apache Pony Mail project in any way.</p>
     completeness or stability of the code, it does indicate that the
     project has yet to be fully endorsed by the ASF.
 </p>
-<p style="font-size: 8pt; line-height: 12pt;">
+<p style="font-size: 9pt; line-height: 12pt; text-align: center;">
     Copyright 2016, the <a href="http://www.apache.org/">Apache Software Foundation</a>.<br/>
     Apache Pony Mail and the Apache Pony Mail logo are trademarks of the Apache Software Foundation.
     Apache and the Apache feather are registered trademarks of the

@@ -3,7 +3,7 @@ built to scale to millions of archived messages with hundreds of requests
 per second.  It allows you to browse, search, and interact with mailing lists
 including creating replies to mailing list threads.
 
-Apache Pony Mail uses Mozilla Persona or OAuth2 (Google, GitHub,
+Apache Pony Mail uses OAuth2 (Google, GitHub,
 Facebook etc) for authentication to allow viewing private lists, and uses
 ElasticSearch for storage and searching.  Licensed under the Apache License 2.0
 and undergoing Incubation at the Apache Software Foundation (ASF).
@@ -41,7 +41,7 @@ private.
 * Multi-site, multi-list handling
 * Word clouds
 * Fuzzy-logic email grouping/threading (based in part on JWZ's ideas)
-* Supports both custom OAuth, Google Auth, OAuth.online and Mozilla Persona
+* Supports both custom OAuth, Google Auth and more.
 * Atom feeds for all lists (including private ones!)
 * Source view and custom range mbox export
 * Customized trend analysis and n-grams
