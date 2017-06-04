@@ -203,13 +203,7 @@ You may use the following variables in the footer:</p>
 <p>By default, headers such as to/cc are not shown in the normal email view.
 To enable these headers, set <code>full_headers</code> to <code>true</code> in the <code>site/api/lib/config.lua</code> file.</p>
 <h3 id='lastlyanoteaboutmessageidmidgenerators'>Lastly, a note about Message-ID (MID) generators<a href='#lastlyanoteaboutmessageidmidgenerators' style='color: rgba(0,0,0,0);'>&para;</a></h3>
-<p>The default MID generator is called 'medium' and digests the message
-body, timestamp and list-ID to generate the MID. There is also a 'short'
-that only digests the body, and a 'full' that uses the entire message as
-a bytestring to generate an ID. Medium is recommended for most setups
-(especially clustered setups), while full can be used for single-machine
-setups.
-N.B. At present, all the generators have issues, see (#176 #177 #178)</p>
+<p>Please see <a href="archiving.html#usingtherightidgenerator">this paragraph</a> about document ID generators.</p>
 <div style="display: inline-block; background: #BBB; margin: -10px; padding: 10px;">
     <h4><a id="disclaimer"></a>Disclaimer</h4>
 <div style="width: 65%; float: left;">

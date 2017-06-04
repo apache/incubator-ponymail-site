@@ -89,6 +89,19 @@ provided it is set as an authority in config.lua. This will provide anyone
 defined as a member via OAuth full access to all private lists.</p>
 <p>If you use LDAP, you can modify the LDAP queries in the example AAA file to suit
 your organization.</p>
+<h2 id='usingtherightidgenerator'>Using the right ID generator<a href='#usingtherightidgenerator' style='color: rgba(0,0,0,0);'>&para;</a></h2>
+<p>Pony Mail relies on ID generators to produce a unique document ID for each email.
+Depending on the setup of your installation, we recommend using one of two generators:</p>
+<ul>
+<li>If you have a single-node setup, we recommend using the <code>full</code> generator. This generator
+  uses the full message body, including MTA trails (Received headers etc), to generate an ID.</li>
+<li>If you have a clustered/redundant setup (multiple archiver nodes), we recommend using the
+  <code>redundant</code> generator. This will use as many unique traits in an email as possible, but
+  discard the MTA trail (which differs from machine to machine).</li>
+</ul>
+<p>We do not recommend using the older generators (<code>medium</code> and <code>short</code>)
+for new installations, as they are theoretically prone to create
+duplicate IDs (See issues #176 #177 #178).</p>
 <h2 id='importingarchivinghtmlonlyemails'>Importing/Archiving HTML-only emails<a href='#importingarchivinghtmlonlyemails' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>Should you need to import HTML-only emails into the archive, you may enable this
 with the <code>--html2text</code> command line arg. This requires that the <code>html2text</code> Python3 package
