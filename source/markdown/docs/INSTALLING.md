@@ -205,10 +205,4 @@ By default, headers such as to/cc are not shown in the normal email view.
 To enable these headers, set `full_headers` to `true` in the `site/api/lib/config.lua` file.
 
 ### Lastly, a note about Message-ID (MID) generators
-The default MID generator is called 'medium' and digests the message
-body, timestamp and list-ID to generate the MID. There is also a 'short'
-that only digests the body, and a 'full' that uses the entire message as
-a bytestring to generate an ID. Medium is recommended for most setups
-(especially clustered setups), while full can be used for single-machine
-setups.
-N.B. At present, all the generators have issues, see (#176 #177 #178)
+Please see [this paragraph](archiving.html#usingtherightidgenerator) about document ID generators.

@@ -69,6 +69,19 @@ defined as a member via OAuth full access to all private lists.
 If you use LDAP, you can modify the LDAP queries in the example AAA file to suit
 your organization.
 
+## Using the right ID generator
+Pony Mail relies on ID generators to produce a unique document ID for each email.
+Depending on the setup of your installation, we recommend using one of two generators:
+
+- If you have a single-node setup, we recommend using the `full` generator. This generator
+  uses the full message body, including MTA trails (Received headers etc), to generate an ID.
+- If you have a clustered/redundant setup (multiple archiver nodes), we recommend using the
+  `redundant` generator. This will use as many unique traits in an email as possible, but
+  discard the MTA trail (which differs from machine to machine).
+
+We do not recommend using the older generators (`medium` and `short`)
+for new installations, as they are theoretically prone to create
+duplicate IDs (See issues #176 #177 #178).
 
 ## Importing/Archiving HTML-only emails
 Should you need to import HTML-only emails into the archive, you may enable this
