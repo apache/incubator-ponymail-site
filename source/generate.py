@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import markdown, codecs, os, sys, re, time
+import markdown, codecs, os, sys, re, time, io
 
 
 template = ""
@@ -38,7 +38,7 @@ def runDir(path):
             if not os.path.isdir("../content/" + bpath):
                 print("Making dir %s" % bpath)
                 os.mkdir("../content/%s" % bpath)
-            with open('../content/%s' % outfile, "w") as out:
+            with io.open('../content/%s' % outfile, "w", encoding='utf8') as out:
                 out.write(html)
                 out.close()
 
