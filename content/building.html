@@ -1,0 +1,80 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Apache Pony Mail (Incubating)</title>
+<link rel="stylesheet" type="text/css" href="/css/default.css"/>
+<link rel="stylesheet" type="text/css" href="/css/fa/fa.css"/>
+<link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+</head><body>
+<div id="titlebar">
+    <a href="/contribute.html"><img align='left' style="width: 130px; height: 125px; position: relative; left: -6px; top: -6px; border: 0;" src="/images/devme.png" alt="Fork/Hack on Pony Mail"></a>
+    <a href='/'><img src="/images/ponymail.svg" style="width: 110px; margin-left: -10px; margin-right: 20px; height: auto;" align="left"/></a>
+    <h1><a id="title" href="/" style="color: #FFF !important;">Apache Pony Mail&trade; (Incubating)</a></h1>
+    <div id="menubar">
+        <ul>
+            <li><a href="/docs.html"><i class="fa fa-book"></i><span>Documentation</span></a></li>
+            <li><a href="/source.html"><i class="fa fa-git-square"></i><span>Source</span></a></li>
+            <li><a href="/downloads.html"><i class="fa fa-cloud-download"></i><span>Download</span></a></li>
+            <li><a href="/support.html"><i class="fa fa-question-circle"></i><span>Get support</span></a></li>
+            <li><a href="/contribute.html"><i class="fa fa-share-alt"></i><span>Contribute</span></a></li>
+            <li><a href="/about.html"><i class="fa fa-users"></i><span>About</span></a></li>
+        </ul>
+    </div>
+</div>
+<h1 id='buildingandreleasingapacheponymailincubating'>Building (and releasing) Apache Pony Mail (Incubating)<a href='#buildingandreleasingapacheponymailincubating' style='color: rgba(0,0,0,0);'>&para;</a></h1>
+<p>Release managers wanting to initiate a release of Pony Mail should follow these steps:</p>
+<p>Assuming you wish to release version X.Y</p>
+<ul>
+<li>Create a new branch off master called X.Y (ideally, master is always releasable).</li>
+<li>Tarball the branch, sans the .git directory: <code>git archive --format=tar.gz -o ~/ponymail-X.Y.tar.gz HEAD</code></li>
+<li>Create checksums of the archive (make sure your PGP key is in our <a href="https://dist.apache.org/repos/dist/dev/incubator/ponymail/KEYS">KEYS</a> file!):</li>
+<li>Make a checksum for the archive itself: <code>sha256sum ponymail-X.Y.tar.gz &gt; ponymail-X.Y.tar.gz.sha256</code></li>
+<li>Sign the archive: <code>gpg --output ponymail-X.Y.tar.gz.asc --sign ponymail-X.Y.tar.gz</code> OR</li>
+<li>Sign the checksum: <code>gpg --output ponymail-X.Y.tar.gz.sha256.asc --sign ponymail-X.Y.tar.gz.sha256</code></li>
+<li>Push the artefacts to <code>https://dist.apache.org/repos/dist/dev/incubator/ponymail/</code> via subversion</li>
+<li>Initate a vote on the release on dev@ponymail.a.o. To make things easier, don't bother with RC1, RC2 etc. version numbers are cheap.</li>
+<li>Summarize the vote on the dev list after 72 hours.</li>
+<li>When/If the vote passes, you can then move the artefacts to <code>https://dist.apache.org/repos/dist/release/incubator/ponymail/</code> via <code>svn mv</code></li>
+<li>Announce the new release :)</li>
+</ul>
+<div style="display: inline-block; background: #BBB; margin: -10px; padding: 10px;">
+    <h4><a id="disclaimer"></a>Disclaimer</h4>
+<div style="width: 65%; float: left;">
+<p style="line-height: 12pt;">
+    Apache Pony Mail (Incubating) is an effort undergoing incubation at
+    The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
+    Apache Incubator</a>. Incubation is required of all newly accepted projects
+    until a further review indicates that the infrastructure,
+    communications, and decision making process have stabilized in a
+    manner consistent with other successful ASF projects. While
+    incubation status is not necessarily a reflection of the
+    completeness or stability of the code, it does indicate that the
+    project has yet to be fully endorsed by the ASF.
+</p>
+</div>
+<div style="width: 20%; float: left; padding-top: 16px; margin-left: -8px;">
+<a href="https://incubator.apache.org"><img src="https://incubator.apache.org/images/incubator_feather_egg_logo_sm.png"/></a>
+</div>
+<div style="width: 15%; float: left; line-height: 15px; padding-left: 22px;">
+    <a class="item" target="_blank" href="http://incubator.apache.org/">Apache Incubator</a><br/>
+            <a class="item" target="_blank" href="http://www.apache.org/">About the ASF<span></span></a><br/>
+            <a class="item" target="_blank" href="http://www.apache.org/foundation/thanks.html">Thanks<span></span></a><br/>
+            <a class="item" target="_blank" href="http://www.apache.org/foundation/sponsorship.html">Become a Sponsor<span></span></a><br/>
+            <a class="item" target="_blank" href="http://www.apache.org/security/">Security<span></span></a><br/>
+            <a class="item" target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0">License<span></span></a><br/>
+</div>
+</div>
+</body></html>
