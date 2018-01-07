@@ -6,9 +6,7 @@ documentation, evangelism, marketing, or helping out other users.
 
 ## Source code and issue tracker ##
 
-Our canonical source repository is at: [https://git-wip-us.apache.org/repos/asf/incubator-ponymail.git](https://git-wip-us.apache.org/repos/asf/incubator-ponymail.git)
-
-We also have a GitHub mirror at: [https://github.com/apache/incubator-ponymail](https://github.com/apache/incubator-ponymail)
+Our source repository is at: [https://github.com/apache/incubator-ponymail](https://github.com/apache/incubator-ponymail)
 
 We currently use GitHub Issues for tracking bugs and improvements: [https://github.com/apache/incubator-ponymail/issues](https://github.com/apache/incubator-ponymail/issues)
 
@@ -35,7 +33,7 @@ repository configured as a remote. In this case we will add it as a
 remote called "ponymail":
 ~~~
 cd ponymail
-git remote add ponymail https://git-wip-us.apache.org/repos/asf/incubator-ponymail.git
+git remote add ponymail https://github.com/apache/incubator-ponymail.git
 ~~~
 
 #### Create the feature branch
