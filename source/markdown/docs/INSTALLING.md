@@ -141,7 +141,7 @@ config.lua:
 
 ~~~
     admin_oauth = { 'myoauth.foo.tld', '*.oauthprovider.com', 'etc' }
-~~~~
+~~~
 
 If not specified in config.lua, OAuth will only provide users with a place to
 store settings and notifications, and - provided your mail server is set to accept
