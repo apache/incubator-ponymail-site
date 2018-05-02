@@ -2,6 +2,17 @@
 
 import markdown, codecs, os, sys, re, time, io
 
+"""
+Script to process the markdown files:
+- converts text enclosed in ~~~ to <pre>
+- adds anchor links to <h1-6>
+- fixes references to UPPERCASE.md files
+- applies markdown processing
+- writes the files as lower-case .html to content/ tree
+
+Note: only .md files will be copied to content/
+Static files such as css and images are assumed to be already present under content/
+"""
 
 template = ""
 with open("template.html", "r") as tmpl:
@@ -19,10 +30,14 @@ def runDir(path):
             outfile = f.replace(".md", ".html").lower().replace("//", "/")
             outfile = path.replace("markdown", "", 1) + outfile
             text = input_file.read()
+            # convert sections enclosed in ~~~ to <pre> blocks
             text = re.sub(r"~~~([\s\S]+?)~~~", "<pre>\\1</pre>", text, flags=re.MULTILINE)
+            # convert references to UPPERCASE.md files to lower-case.html
+            # e.g. Refer to the [General installation documentation](INSTALLING.md)
+            # =>   Refer to the [General installation documentation](installing.html)
             text = re.sub(r"([A-Z/]+)\.md", lambda x: x.group(1).lower() + ".html", text, flags =re.MULTILINE)
             html = markdown.markdown(text)
-            # Convert h1-h6 into links
+            # Convert h1-h6 into anchors with paragraph mark hover links
             html = re.sub(r"<h([1-6])>(.+?)</h[1-6]>", lambda x:
                 "<h%s id='%s'>%s<a href='#%s' style='color: rgba(0,0,0,0);'>&para;</a></h%s>" % (
                 x.group(1),
@@ -32,6 +47,7 @@ def runDir(path):
                 x.group(1)
                        )
                           , html)
+            # merge the transformed file with the template
             html = template.replace("%CONTENT%", html, 1)
             print("Writing %s..." % outfile)
             bpath = os.path.dirname(outfile)
