@@ -1,8 +1,12 @@
 # Download Apache Pony Mail (Incubating)
 
+Be sure to [verify your downloads](https://www.apache.org/info/verification) using the folowing [KEYS](https://www.apache.org/dist/incubator/ponymail/KEYS).
+
 The latest release of Pony Mail is 0.10, released on 2018-02-15. You can fetch it here:
 
-[Download Apache Pony Mail (Incubating) 0.10 from a mirror](/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz)
+[Download Apache Pony Mail (Incubating) 0.10 from a mirror](/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz) 
+   [asc](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz.asc)
+[sha256](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz.sha256)
 
 ## CHANGES in 0.10:
 
