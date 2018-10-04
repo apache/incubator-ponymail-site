@@ -189,4 +189,3 @@ The latest release of Pony Mail is 0.10, released on 2018-02-15. You can fetch i
 - Confusing parameter name (--rename) in copy-list.py (#207)
 - Fix base64 decoding of certain files (#384)
 
-
