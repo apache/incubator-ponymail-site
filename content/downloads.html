@@ -35,27 +35,188 @@
     </div>
 </div>
 <h1 id='downloadapacheponymailincubating'>Download Apache Pony Mail (Incubating)<a href='#downloadapacheponymailincubating' style='color: rgba(0,0,0,0);'>&para;</a></h1>
-<p>The latest release of Pony Mail is 0.9, released on 2016-08-02. You can fetch it here:</p>
-<p><a href="/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.9.incubating.tar.gz">Download Apache Pony Mail (Incubating) 0.9 from a mirror</a></p>
-<h2 id='changesin09'>CHANGES in 0.9:<a href='#changesin09' style='color: rgba(0,0,0,0);'>&para;</a></h2>
+<p>The latest release of Pony Mail is 0.10, released on 2018-02-15. You can fetch it here:</p>
+<p><a href="/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.10.incubating.tar.xz">Download Apache Pony Mail (Incubating) 0.10 from a mirror</a></p>
+<h2 id='changesin010'>CHANGES in 0.10:<a href='#changesin010' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <ul>
-<li>Private lists can be hidden in the index from users without access</li>
-<li>Fixed an issue where LocalStorage limits would break the site</li>
-<li>Fixed an issue with gravatars not showing up</li>
-<li>UI can now auto-scale, allowing as many results per page as screen height will support</li>
-<li>Users can add favorite lists to their user menu (shortcuts)</li>
-<li>Reply-to and compose now works from the permalink page</li>
-<li>Archiver can now set an explicit List ID from command-line</li>
-<li>Archiver and importer can now do on-the-fly regex List ID replacement</li>
-<li>Increased import parsing timeout from 2 to 6 minutes per mbox file</li>
-<li>Private emails are now more clearly marked as such in the UI</li>
-<li>Logging in via OAuth now remembers where you left off</li>
-<li>Added support for Maildir imports</li>
-<li>Added three distinct Message-ID generators (short, medium, full)</li>
-<li>Fixed some issues with email association</li>
-<li>Added obfuscation mechanism to the list editor</li>
-<li>Added a dry-run feature to the list editor (no changes made)</li>
-<li>Added a single-message edit feature for the liste editor</li>
+<li>Bug: Use correct dependency order to fix OAuth login problem (#431)</li>
+<li>Bug: HTTPS connections may fail with ES 6.x libraries (#425)</li>
+<li>Enh: Support ES 6.x library (#424)</li>
+<li>Enh: Optionally dump JSON documents to disk if push to ES fails (#423).</li>
+<li>Bug: GUI can hide reply text when analysing quoted text (#421)</li>
+<li>mbox.lua output filename does not match ISO standard (#420)</li>
+<li>Added empty line quotes to JS compaction feature</li>
+<li>Changed default theme to 'compact'</li>
+<li>Added --dbprefix for setup.py for proxied ES databases</li>
+<li>Added fielddata values to email subjects to fix word clouds on ES&gt;=5.x</li>
+<li>Bug: MboxoReader needs to return all data for a read() call (#415)</li>
+<li>Bug: import-mbox should not check database during a dry run (#413)</li>
+<li>Archiver loses some message information (#402)</li>
+<li>Mail parsing can change source spacing (#410)</li>
+<li>Bug: use actual envelope header if present (#412)</li>
+<li>Bug: stats.lua should use UTC for calculating year and month (#409)</li>
+<li>Bug: atom.lua - should generate date in UTC, not local time (#408)</li>
+<li>Bug: shorten links does not work with cluster ids (#406)</li>
+<li>Drop lid from 'cluster' hash - it's already in the id (#400)</li>
+<li>Enh: 'cluster' generator ids are not sufficiently unique (#398)</li>
+<li>archiver/importer adds a Message-Id to mails if they don't have one (#403)</li>
+<li>Fixed an issue with ID generation where an email body does not exist</li>
+<li>Fixed an issue where favorites could contain null entries due to missing GC (#392)</li>
+<li>Added sample configs for Pony Mail (#374)</li>
+<li>Renamed ll.py to list-lists.py (#378)</li>
+<li>ID generators have now been split into a separate library (generators.py)</li>
+<li>more comprehensive ID generation mechanisms</li>
+<li>private messages are now included in downloads if the user has access to them (#169, #108)</li>
+<li>mbox export now generates valid From_ line (#190)</li>
+<li>mbox export now escapes 'From ' lines in body text (#188)</li>
+<li>stats.lua ignores negated words when building the word cloud (#277)</li>
+<li>combine pminfo.lua aggregations for efficiency (#273)</li>
+<li>various typos fixed and other tidyup</li>
+<li>quicker to fetch only aggregation results where the hits are not needed (#271)</li>
+<li>archiver and import-mbox create different mbox_source entries - drop spurious importer field (#266)</li>
+<li>make it easier to test the archiver - --dry option (#264)</li>
+<li>import-mbox dry run should exercise as much as possible of the code (#258)</li>
+<li>archiver and import-mbox handle invalid encodings differently (#261)</li>
+<li>archiver unconditionally ignores encoding errors (#260)</li>
+<li>archiver does not allow for attachment which is not multipart (#257)</li>
+<li>archiver drops empty attachments (#256)</li>
+<li>archiver drops attachment with utf-8 encoded name (#255)</li>
+<li>import-mbox.py and archiver.py create different source texts (#251)</li>
+<li>import-mbox.py messages need the thread number (#248)</li>
+<li>import-mbox.py does not identify which messages failed (#246)</li>
+<li>edit-list.py does not process --obfuscate if it is used alone (#238)</li>
+<li>edit-list.py does not honour --test with --desc (#237)</li>
+<li>elastic.lua checkReturn() does not properly check return code (#236)</li>
+<li>import-mbox.py keeps rechecking if the index exists (#233)</li>
+<li>import-mbox.py allows invalid lid (#230)</li>
+<li>import-mbox.py --project qualifier regex errors (#229)</li>
+<li>properties missing from mappings in setup.py (#228)</li>
+<li>setup.py does not create mbox mapping property 'cc' (#226)</li>
+<li>setup.py does not create notifications/account mappings (#225)</li>
+<li>archiver fails when adding entries to the notifications table (#223)</li>
+<li>elastic.lua index function should not auto-generate ids (#222)</li>
+<li>coffee script generation order seems to vary between OSes (#215)</li>
+<li>display treats &gt;From as quoted text (#213)</li>
+<li>import-mbox.py should be able to import individual files (#210)</li>
+<li>import-mbox.py should not start more threads than there are files (#209)</li>
+<li>No point creating an 'Other lists:' drop-down if it will only contain a single entry (#208)</li>
+<li>combine.sh uses GNU-only sed extension -s (--separate); it's not needed (#187)</li>
+<li>setup.py can overwrite existing config files (#185)</li>
+<li>setup.py does not handle connection failure well (#184)</li>
+<li>Other lists drop-down should be sorted by name (#183)</li>
+<li>does not handle missing or empty subjects well (#182)</li>
+<li>import-mbox.py does not report if List-Id is missing (#174)</li>
+<li>mailinglists index should be created by setup.py or made truly optional (#164)</li>
+<li>elastic.lua checkReturn should throw errors in the callers context (#150)</li>
+<li>elastic.lua does not always check http return status (#145)</li>
+<li>use of global variables in handle() methods (#141)</li>
+<li>lib/elastic.lua: various bugs (#139)</li>
+<li>user.getUser() overwrites login global variable; defines unused variable 'usr' (#138)</li>
+<li>import-mbox.py does not handle protocol choice well (#135)</li>
+<li>setup.py does not handle empty response to port number well (#133)</li>
+<li>broken mail thread; attempted recovery causes unhandled error (#124)</li>
+<li>https://lists.apache.org/list.html?dev@eagle.apache.org fails (#121)</li>
+<li>get by message-id does not work (#88)</li>
+<li>stored date uses locale-dependent conversion and is ambiguous (#86)</li>
+<li>search strings not properly quoted. (#76)</li>
+<li>pminfo.lua creates top100 sender information but it's not used (#282)</li>
+<li>stats.lua could use single aggregate query to get first and last years (#276)</li>
+<li>stats.lua can fail when creating top10 senders (#283)</li>
+<li>ponymail.js/formatDate may show the wrong timezone (#285)</li>
+<li>archiver.py fails when attachment name is not ASCII (#287)</li>
+<li>emails with no body content are ignored (#109)</li>
+<li>does not handle text/enriched mails (#289)</li>
+<li>ll.py retrieves results but does not use them (#291)</li>
+<li>lib/aaa.lua various bugs (#140)</li>
+<li>lua modules should define local functions only (#294)</li>
+<li>inconsistent rights checking (#267)</li>
+<li>thread.lua fails to fetch rights when fetching private child of public parent (#296)</li>
+<li>typo in all example aaa modules: xemail != exmail (#299)</li>
+<li>lib/aaa.lua overwrites local customisations on updates (#292)</li>
+<li>rights checking should be localised (#293)</li>
+<li>pminfo.lua does some unnecessary work (#220)</li>
+<li>stats.lua uses inconsistent email canonicalisation code (#300)</li>
+<li>stats.lua - inconsistent output between slow_count = true/false (#301)</li>
+<li>confusion of storageAvailable and localStorage in ponymail.js (#194)</li>
+<li>unnecessary double-checking of window.sessionStorage in ponymail.js (#193)</li>
+<li>lua scripts not using cross.contentType() compatibility function (#218)</li>
+<li>code assumes that subject is always present in an e-mail (#149)</li>
+<li>elastic.lua:getHeaders uses different sort field (#146)</li>
+<li>redundant matching of same string (#117)</li>
+<li>ponymail.js uses unsupported preferences.lua parameter (#165)</li>
+<li>preferences.lua never fetches descriptions (#163)</li>
+<li>api.html does not document all the stats.lua parameters (#115)</li>
+<li>allow preferences to use non-default mail port (#303)</li>
+<li>preferences.lua should not return list data if it was not requested (#305)</li>
+<li>preferences.lua should not update the user account if the mail is not sent OK (#306)</li>
+<li>alts.js does not check for errors when calling preferences.lua (#304)</li>
+<li>An unauthorised private mail should be treated like a non-existent mail (#295)</li>
+<li>Move common anonymizing code to utils (#308)</li>
+<li>Move extractCanonEmail to utils</li>
+<li>preferences does not properly remove nulls from account.credentials.altemail (#309)</li>
+<li>manage e-mails can create multiple identical alternate addresses (#307)</li>
+<li>elastic.get does not return if a document is not found but some callers overlook this (#137)</li>
+<li>pcall() idiom to protect against elastic.lua exceptions is flawed (#162)</li>
+<li>unhelpful error reporting for invalid Permalinks/Source links (#123)</li>
+<li>import-mbox.py fails to unescape &gt;From lines (#212)</li>
+<li>Updated Google+ API for logins</li>
+<li>Fixed a redirect bug with oauth</li>
+<li>Removed support for Mozilla Persona</li>
+<li>elastic.scroll does not return nil sid when there are no more results (#315)</li>
+<li>stats.lua should return firstMonth and lastMonth (#120)</li>
+<li>many python scripts insist on Python 3.4 (#312)</li>
+<li>config.hidePrivate should be dropped (#272)</li>
+<li>limit filter is deprecated in ES 2.0; dropped in ES 5.0 (#318)</li>
+<li>domain parameter is not used externally (#319)</li>
+<li>pminfo.lua fetches and saves epoch but never uses it #320</li>
+<li>pminfo.lua - no need to use scroll unless doc count &gt; 10000 (#321)</li>
+<li>pminfo.lua - scroll/scan ignores sort order (#322)</li>
+<li>flat view mode does not show first line of body (#198)</li>
+<li>Fetch URLBase once in Javascript</li>
+<li>absolute URLs must be prefixed with URLBase in JS files (#327)</li>
+<li>cannot use absolute URLs in HTML pages (#328)</li>
+<li>setup.py now prompts for shard and replica counts when creating the index (#313)</li>
+<li>'hot topics' feature should use terms, not significant_terms (#329)</li>
+<li>stats.lua - slow_count option is unnecessary (#323)</li>
+<li>stats.lua updates senders array unnecessarily in statsOnly (quick) mode (#330)</li>
+<li>stats.lua returns email time instead of os time in unixtime field (#331)</li>
+<li>stats.lua - cache causes inconsistent output when quick is used (#118)</li>
+<li>does not show mixed private/public lists unless logged in (#70)</li>
+<li>inconsistent error reporting for invalid mailing lists (#112)</li>
+<li>Always use Javascript conditional blocks (#333)</li>
+<li>links in stats pane don't set up the correct date range (#106)</li>
+<li>code should delete scroll id after use (#336)</li>
+<li>ll.py - Make --count work with --pretty; show private message counts</li>
+<li>DRY: move leapYear and end of month calculations to utils</li>
+<li>indicate which months are outside the archive span for a list (#340)</li>
+<li>default to medium ID generator (#343)</li>
+<li>scroll/scan is not supported in ES 5.x (#344)</li>
+<li>GUI does not report maxResult truncation correctly (#335)</li>
+<li>ponymail.js creates/displays dates with no timezone - confusing (#286)</li>
+<li>Make it clearer when you're not logged in. (#195)</li>
+<li>list name not normalised when imported (#253)</li>
+<li>GUI ignores date span in list.html URI if query is blank (#346)</li>
+<li>search phrase dropped from list.html URI if date span is yyyy-mm (#347)</li>
+<li>stats.lua first/last dates don't always agree with visible mails (#350)</li>
+<li>Use constant for max list count instead of 500000 (#352)</li>
+<li>Tighten wildcard searches to only search in the same domain level (#348)</li>
+<li>useless conditional when fetching id parameter (#353)</li>
+<li>ES 5.0 no longer supports the write consistency option for index(); archiver fails (#351)</li>
+<li>Cookie should use httpOnly and Secure (#355)</li>
+<li>Allow insecure cookie (config item intended for local testing only) (#355)</li>
+<li>crash in import-mbox when list-id is missing and --lid is not provided (#358)</li>
+<li>archiver traverses multi-part message parts twice (#359)</li>
+<li>Add unsubscribe button (#362)</li>
+<li>Bug: invalid style setting: overflow:hide =&gt; overflow:hidden (#364)</li>
+<li>Bug: wordcloud.js logs to the console (#363)</li>
+<li>Bug: source.lua does not specify the charset (#367)</li>
+<li>Bug: archiver stores attachment binary data types with embedded newlines (#262)</li>
+<li>Bug: may corrupt 8bit message source if it is not encoded in UTF-8 (#366)</li>
+<li>Enh: make debug info optional (#369)</li>
+<li>import-mbox.py: mailbox defaults to Create if file is not found (#370)</li>
+<li>Bug: import --dedup does not cater for messages sent to multiple lists (#373)</li>
+<li>Confusing parameter name (--rename) in copy-list.py (#207)</li>
+<li>Fix base64 decoding of certain files (#384)</li>
 </ul>
 <div style="display: inline-block; background: #BBB; margin: -10px; padding: 10px;">
     <h4><a id="disclaimer"></a>Disclaimer</h4>
