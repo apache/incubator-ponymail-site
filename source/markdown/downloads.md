@@ -2,12 +2,46 @@
 
 Be sure to [verify your downloads](https://www.apache.org/info/verification) using the folowing [KEYS](https://www.apache.org/dist/incubator/ponymail/KEYS).
 
-The latest release of Pony Mail is 0.10, released on 2018-02-15. You can fetch it here:
+The latest release of Pony Mail is 0.11, released on 2019-04-20. You can fetch it here:
 
-[Download Apache Pony Mail (Incubating) 0.10 from a mirror](/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz) 
+[Download Apache Pony Mail (Incubating) 0.10 from a mirror](/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz) 
 Verify:
-   [asc](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz.asc)
-[sha256](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz.sha256)
+   [asc](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.asc)
+[sha256](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.sha256)
+
+## Changes in 0.11:
+- Bug: Tidy up list names on seeding pages to avoid breakage
+- Enh: Enforce UTF-8 in content headers (#479)
+- Bug: elastic.lua#scroll forces sort to use _doc (#478)
+- Bug: cannot download more than 10K mails to a mbox file (#475)
+- Bug: no need to sort after scroll (#477)
+- Enh: Ensure non-printable chars are not lost in source and mbox output (#476)
+- Enh: display buttons even if no mails are found in a month (#470)
+- Bug: Javascript URLs must always use URL_BASE (#469)
+- Bug: setup.py uses ES library version to decide what features the database supports (#464)
+- Various tidyups suggested by Pylint
+- Bug: archiver.py can never detect content-type: flowed (#461)
+- Bug: import-mbox.py: imap code should not reset ES instance (#460)
+- Bug: tmpname used before it has been set up in import-mbox (#458)
+- Bug: variable 'mid' used before assignment in archiver.py (#459)
+- Enh: remove duplicated code in tools scripts by using elastic.py module (#456)
+- Enh: separate module to read config file 
+- Bug: push-failures.py expects to find non-existent 'id' key in json file (#454)
+- Bug: ES 5.x does not support word-cloud (stats.lua) (#345)
+- Add version info to elastic module
+- Bug: setup.py fails with ES2 - fielddata (#453)
+- Bug: setup.py --default should not prompt for urlPrefix (#452)
+- Bug: copy-list.py does not work (#450)
+- Bug: unnecessary test (will always succeed) in copy-list.py (#451)
+- Bug: archiver ignores failures if dumponfail is not defined (#449)
+- Enh: make MboxoFactory optional (#442)
+- Bug: duplication of data in response from thread.lua (#440)
+- Bug: Indentation in mail content (leading white-space) not shown (#432)
+- Bug: does not make sense to allow empty domain name in LID (#434)
+- Bug: Inconsistent LID validation (#356)
+- Enh: option to reduce stats.lua output (#438)
+- Bug: Threading should take References header into account (#444)
+
 
 ## CHANGES in 0.10:
 
