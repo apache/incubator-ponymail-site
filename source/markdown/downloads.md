@@ -4,7 +4,7 @@ Be sure to [verify your downloads](https://www.apache.org/info/verification) usi
 
 The latest release of Pony Mail is 0.11, released on 2019-04-20. You can fetch it here:
 
-[Download Apache Pony Mail (Incubating) 0.10 from a mirror](/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz) 
+[Download Apache Pony Mail (Incubating) 0.11 from a mirror](/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz) 
 Verify:
    [asc](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.asc)
 [sha256](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.sha256)
