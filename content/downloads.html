@@ -36,11 +36,45 @@
 </div>
 <h1 id='downloadapacheponymailincubating'>Download Apache Pony Mail (Incubating)<a href='#downloadapacheponymailincubating' style='color: rgba(0,0,0,0);'>&para;</a></h1>
 <p>Be sure to <a href="https://www.apache.org/info/verification">verify your downloads</a> using the folowing <a href="https://www.apache.org/dist/incubator/ponymail/KEYS">KEYS</a>.</p>
-<p>The latest release of Pony Mail is 0.10, released on 2018-02-15. You can fetch it here:</p>
-<p><a href="/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz">Download Apache Pony Mail (Incubating) 0.10 from a mirror</a> 
+<p>The latest release of Pony Mail is 0.11, released on 2019-04-20. You can fetch it here:</p>
+<p><a href="/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz">Download Apache Pony Mail (Incubating) 0.11 from a mirror</a> 
 Verify:
-   <a href="https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz.asc">asc</a>
-<a href="https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.10-incubating.tar.xz.sha256">sha256</a></p>
+   <a href="https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.asc">asc</a>
+<a href="https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.sha256">sha256</a></p>
+<h2 id='changesin011'>Changes in 0.11:<a href='#changesin011' style='color: rgba(0,0,0,0);'>&para;</a></h2>
+<ul>
+<li>Bug: Tidy up list names on seeding pages to avoid breakage</li>
+<li>Enh: Enforce UTF-8 in content headers (#479)</li>
+<li>Bug: elastic.lua#scroll forces sort to use _doc (#478)</li>
+<li>Bug: cannot download more than 10K mails to a mbox file (#475)</li>
+<li>Bug: no need to sort after scroll (#477)</li>
+<li>Enh: Ensure non-printable chars are not lost in source and mbox output (#476)</li>
+<li>Enh: display buttons even if no mails are found in a month (#470)</li>
+<li>Bug: Javascript URLs must always use URL_BASE (#469)</li>
+<li>Bug: setup.py uses ES library version to decide what features the database supports (#464)</li>
+<li>Various tidyups suggested by Pylint</li>
+<li>Bug: archiver.py can never detect content-type: flowed (#461)</li>
+<li>Bug: import-mbox.py: imap code should not reset ES instance (#460)</li>
+<li>Bug: tmpname used before it has been set up in import-mbox (#458)</li>
+<li>Bug: variable 'mid' used before assignment in archiver.py (#459)</li>
+<li>Enh: remove duplicated code in tools scripts by using elastic.py module (#456)</li>
+<li>Enh: separate module to read config file </li>
+<li>Bug: push-failures.py expects to find non-existent 'id' key in json file (#454)</li>
+<li>Bug: ES 5.x does not support word-cloud (stats.lua) (#345)</li>
+<li>Add version info to elastic module</li>
+<li>Bug: setup.py fails with ES2 - fielddata (#453)</li>
+<li>Bug: setup.py --default should not prompt for urlPrefix (#452)</li>
+<li>Bug: copy-list.py does not work (#450)</li>
+<li>Bug: unnecessary test (will always succeed) in copy-list.py (#451)</li>
+<li>Bug: archiver ignores failures if dumponfail is not defined (#449)</li>
+<li>Enh: make MboxoFactory optional (#442)</li>
+<li>Bug: duplication of data in response from thread.lua (#440)</li>
+<li>Bug: Indentation in mail content (leading white-space) not shown (#432)</li>
+<li>Bug: does not make sense to allow empty domain name in LID (#434)</li>
+<li>Bug: Inconsistent LID validation (#356)</li>
+<li>Enh: option to reduce stats.lua output (#438)</li>
+<li>Bug: Threading should take References header into account (#444)</li>
+</ul>
 <h2 id='changesin010'>CHANGES in 0.10:<a href='#changesin010' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <ul>
 <li>Bug: Use correct dependency order to fix OAuth login problem (#431)</li>
