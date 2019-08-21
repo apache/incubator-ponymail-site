@@ -76,7 +76,7 @@ Depending on the setup of your installation, we recommend using one of two gener
 - If you have a single-node setup, we recommend using the `full` generator. This generator
   uses the full message body, including MTA trails (Received headers etc), to generate an ID.
 - If you have a clustered/redundant setup (multiple archiver nodes), we recommend using the
-  `redundant` generator. This will use as many unique traits in an email as possible, but
+  `cluster` generator. This will use as many unique traits in an email as possible, but
   discard the MTA trail (which differs from machine to machine).
 
 We do not recommend using the older generators (`medium` and `short`)
