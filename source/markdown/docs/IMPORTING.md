@@ -11,6 +11,12 @@ emails start flowing through it, you'll use the importer to import older emails.
 
 ## Importing from mod_mbox
 
+### Warning ###
+
+Pony Mail relies on the mail headers to determine the correct list name for each email.
+
+If in any doubt, import a single list at a time and use the --lid flag to specify the correct list name.
+
 ### Importing a single domain
 Provided you have the main mod_mbox page at https://your.tld/mod_mbox/ and your (sub)domain resources at
 https://your.tld/mod_mbox/$list-yourdomain/, you can import all lists from that domain using:
