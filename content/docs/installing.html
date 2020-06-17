@@ -62,6 +62,8 @@ for detailed package installation instructions:</p>
       $python3 setup.py
       ...[follow instructions in the setup script]</code></li>
 <li>Edit <code>site/js/config.js</code> to suit your needs (usually very little editing is needed)</li>
+<li>Set up the appropriate authorisation for private lists. For examples, see:
+  https://github.com/apache/incubator-ponymail/tree/master/aaa_examples</li>
 </ul>
 <h3 id='usingauthforelasticsearch'>Using auth for ElasticSearch<a href='#usingauthforelasticsearch' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>If your ElasticSearch instance requires authentication for the importer/archiver, please
@@ -106,13 +108,14 @@ header determines the list ID using the --altheader argument, for instance:
   class: mailman_ponymail.Archiver
   enable: yes</code></p>
 <p>For older mailing list systems such as Mailman 2 and ezmlm, you can also
-tak a look at our <a href="archiving.html">archiving examples</a> page for pointers.</p>
+take a look at our <a href="archiving.html">archiving examples</a> page for pointers.</p>
 <h2 id='publicversusprivatelists'>Public versus private lists<a href='#publicversusprivatelists' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>In MailMan 3, this should be auto-detected and is not a concern.
 When using other ML systems via piping to STDIN, you should add
 the --private arg to the python script to mark an email as private:
 <code>foolist-private: "|/usr/bin/python3 /path/to/tools/archiver.py --private"
-    foolist-public: "|/usr/bin/python3 /path/to/tools/archiver.py"</code></p>
+    foolist-public: "|/usr/bin/python3 /path/to/tools/archiver.py"</code>
+Note that private lists are subject to authorisation which you should set up as noted above</p>
 <h2 id='importingolddataintoponymail'>Importing old data into Pony Mail<a href='#importingolddataintoponymail' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>See <a href="importing.html">this guide</a> for details on how to import old archives into Pony Mail.</p>
 <h2 id='bulkeditinglists'>Bulk editing lists<a href='#bulkeditinglists' style='color: rgba(0,0,0,0);'>&para;</a></h2>
