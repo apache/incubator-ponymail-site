@@ -32,6 +32,8 @@ You will need the following software installed on your machine:
       ...[follow instructions in the setup script]
 ```
 - Edit `site/js/config.js` to suit your needs (usually very little editing is needed)
+- Set up the appropriate authorisation for private lists. For examples, see:
+  https://github.com/apache/incubator-ponymail/tree/master/aaa_examples
 
 
 
@@ -86,7 +88,7 @@ If you are using MailMan 3, you can add archiver.py as an archive by following t
 ```
 
 For older mailing list systems such as Mailman 2 and ezmlm, you can also
-tak a look at our [archiving examples](archiving.html) page for pointers.
+take a look at our [archiving examples](archiving.html) page for pointers.
 
 ## Public versus private lists ##
 In MailMan 3, this should be auto-detected and is not a concern.
@@ -96,6 +98,7 @@ the --private arg to the python script to mark an email as private:
     foolist-private: "|/usr/bin/python3 /path/to/tools/archiver.py --private"
     foolist-public: "|/usr/bin/python3 /path/to/tools/archiver.py"
 ```
+Note that private lists are subject to authorisation which you should set up as noted above
 
 ## Importing old data into Pony Mail
 See [this guide](importing.html) for details on how to import old archives into Pony Mail.
