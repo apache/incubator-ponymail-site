@@ -1,7 +1,7 @@
 # Source code
 
 You can check out our source repository at:
-[https://github.com/apache/incubator-ponymail](https://github.com/apache/incubator-ponymail)
+[https://github.com/apache/incubator-ponymail](https://github.com/apache/incubator-ponymail-foal)
 
 
 Our web site is generated from the asf-site branch in following repository: 
