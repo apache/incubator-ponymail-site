@@ -56,6 +56,7 @@ We're a small bunch of people committed to making mailing list interaction as ea
      <li>John D. Ament / johndament - mentor</li>
      <li>Rich Bowen / rbowen - committer</li>
      <li>Sam Ruby / rubys - committer</li>
+     <li>Sean B Palmer / sbp - committer</li>
      <li>Sebastian Bazley / sebb - committer</li>
      <li>Shane Curcu / curcuru - committer</li>
      <li>Tony Stevenson / pctony - committer</li>
