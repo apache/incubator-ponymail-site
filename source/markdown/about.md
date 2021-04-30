@@ -57,7 +57,6 @@ We're a small bunch of people committed to making mailing list interaction as ea
      <li>Rich Bowen / rbowen - committer</li>
      <li>Sam Ruby / rubys - committer</li>
      <li>Sean B Palmer / sbp - committer</li>
-     <li>Sebastian Bazley / sebb - committer</li>
      <li>Shane Curcu / curcuru - committer</li>
      <li>Tony Stevenson / pctony - committer</li>
      <li>Ulises Cerviño Beresi / ucb - committer</li>
