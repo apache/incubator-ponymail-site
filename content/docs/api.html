@@ -68,11 +68,12 @@
 
 <h3 id='fetchinglistdata'>Fetching list data<a href='#fetchinglistdata' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Usage:
-<code>GET /api/stats.lua?list=$list&amp;domain=$domain[&amp;d=$timespan][&amp;q=$query][&amp;header_from=$from][&amp;header_to=$to][&amp;header_subject=$subject][&amp;header_body=$body][&amp;quick][&amp;s=$s&amp;e=$e]</code></p>
+<code>GET /api/stats.lua?list=$list&amp;domain=$domain[&amp;d=$timespan][&amp;q=$query][&amp;header_from=$from][&amp;header_to=$to][&amp;header_subject=$subject][&amp;header_body=$body][&amp;quick][&amp;emailsOnly][&amp;s=$s&amp;e=$e]</code></p>
+<p>See below for details of <a href="#Timespans">timespan</a> values</p>
 <p>Parameters:</p>
 <pre><code>- $list: The list prefix (e.g. `dev`). Wildcards may be used
 - $domain: The list domain (e.g. `httpd.apache.org`). Wildcards may be used
-- $timespan: A [timespan](#Timespans) value
+- $timespan: A timespan value (see below)
 - $s: yyyy-mm start of month (day 1)
 - $e: yyyy-mm end of month (last day)
 - $query: A search query (may contain wildcards or negations):
@@ -83,6 +84,8 @@
 - $to: Optional To: address
 - $subject: Optional Subject: line
 - $body: Optional body text
+- quick: send statistics only (exclude emails, participants, threadstruct, word-cloud)
+- emailsOnly: return email summaries only (omit thread_struct, top 10 participants and word-cloud)
 </code></pre>
 <p>Response example:</p>
 <pre>
