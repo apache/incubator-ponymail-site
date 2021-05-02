@@ -38,13 +38,15 @@ Response example:
 
 ### Fetching list data
 Usage:
-`GET /api/stats.lua?list=$list&domain=$domain[&d=$timespan][&q=$query][&header_from=$from][&header_to=$to][&header_subject=$subject][&header_body=$body][&quick][&s=$s&e=$e]`
+`GET /api/stats.lua?list=$list&domain=$domain[&d=$timespan][&q=$query][&header_from=$from][&header_to=$to][&header_subject=$subject][&header_body=$body][&quick][&emailsOnly][&s=$s&e=$e]`
+
+See below for details of [timespan](#Timespans) values
 
 Parameters:
 
     - $list: The list prefix (e.g. `dev`). Wildcards may be used
     - $domain: The list domain (e.g. `httpd.apache.org`). Wildcards may be used
-    - $timespan: A [timespan](#Timespans) value
+    - $timespan: A timespan value (see below)
     - $s: yyyy-mm start of month (day 1)
     - $e: yyyy-mm end of month (last day)
     - $query: A search query (may contain wildcards or negations):
@@ -55,6 +57,8 @@ Parameters:
     - $to: Optional To: address
     - $subject: Optional Subject: line
     - $body: Optional body text
+    - quick: send statistics only (exclude emails, participants, threadstruct, word-cloud)
+    - emailsOnly: return email summaries only (omit thread_struct, top 10 participants and word-cloud)
     
 Response example:
 
