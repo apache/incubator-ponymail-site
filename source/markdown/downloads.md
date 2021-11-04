@@ -1,13 +1,13 @@
 # Download Apache Pony Mail (Incubating)
 
-Be sure to [verify your downloads](https://www.apache.org/info/verification) using the folowing [KEYS](https://www.apache.org/dist/incubator/ponymail/KEYS).
+Be sure to [verify your downloads](https://www.apache.org/info/verification) using the folowing [KEYS](https://downloads.apache.org/incubator/ponymail/KEYS).
 
 The latest release of Pony Mail is 0.11, released on 2019-04-20. You can fetch it here:
 
-[Download Apache Pony Mail (Incubating) 0.11 from a mirror](/dyn/closer.cgi/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz) 
+[Download Apache Pony Mail (Incubating) 0.11 from a mirror](https://www.apache.org/dyn/closer.lua/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz) 
 Verify:
-   [asc](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.asc)
-[sha256](https://www.apache.org/dist/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.sha256)
+   [asc](https://downloads.apache.org/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.asc)
+[sha256](https://downloads.apache.org/incubator/ponymail/apache-pony-mail-0.11-incubating.tar.gz.sha256)
 
 ## Changes in 0.11:
 - Bug: Tidy up list names on seeding pages to avoid breakage
