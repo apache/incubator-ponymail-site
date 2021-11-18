@@ -14,8 +14,9 @@ Otherwise, read the next two chapters:
 ## Pre-requisites ##
 You will need the following software installed on your machine:
 
-- ElasticSearch >= 2.1
+- ElasticSearch >= 2.1 and < 6.0 (setup.py does not support 6.x+; the code may perhaps run on 6.x)
 - Python 3.x for the archiver plugin (setup.py will handle dependencies) and importer
+- Python `html2text` package (GPLv3) if you wish to archive HTML-only mails (remember to add the `--html2text` command line arg)
 - Apache HTTP Server 2.4.x with mod_lua (see http://modlua.org/gs/installing if you need to build mod_lua manually)
 - Lua >=5.1 with the following modules: cjson, luasec, luasocket
   (Note: Lua 5.3 is not currently supported by httpd mod_lua or luasocket)
@@ -208,4 +209,11 @@ By default, headers such as to/cc are not shown in the normal email view.
 To enable these headers, set `full_headers` to `true` in the `site/api/lib/config.lua` file.
 
 ### Lastly, a note about Message-ID (MID) generators
+The default MID generator is called 'medium' and digests the message
+body, timestamp and list-ID to generate the MID. There is also a 'short'
+that only digests the body, and a 'full' that uses the entire message as
+a bytestring to generate an ID. Medium is recommended for most setups
+(especially clustered setups), while full can be used for single-machine
+setups.
+N.B. At present, all the generators have issues, see (#176 #177 #178)
 Please see [this paragraph](archiving.html#usingtherightidgenerator) about document ID generators.

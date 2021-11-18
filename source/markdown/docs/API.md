@@ -33,12 +33,15 @@ Response example:
     "tid": "06b318af97ca96c115e878c14d0814a53407751c31388410421c1751@1441467256@<dev.any23.apache.org>",
     "list_raw": "<dev.any23.apache.org>"
 }
+
+Note: date and epoch are in UTC
+
 ~~~
 
 
 ### Fetching list data
 Usage:
-`GET /api/stats.lua?list=$list&domain=$domain[&d=$timespan][&q=$query][&header_from=$from][&header_to=$to][&header_subject=$subject][&header_body=$body][&quick][&emailsOnly][&s=$s&e=$e]`
+`GET /api/stats.lua?list=$list&domain=$domain[&d=$timespan][&q=$query][&header_from=$from][&header_to=$to][&header_subject=$subject][&header_body=$body][&quick][&emailsOnly][&s=$s&e=$e][&since=$since][&dfrom=$dfrom&dto=$dto]`
 
 See below for details of [timespan](#Timespans) values
 
@@ -46,7 +49,7 @@ Parameters:
 
     - $list: The list prefix (e.g. `dev`). Wildcards may be used
     - $domain: The list domain (e.g. `httpd.apache.org`). Wildcards may be used
-    - $timespan: A timespan value (see below)
+    - $timespan: A [timespan](#Timespans) value
     - $s: yyyy-mm start of month (day 1)
     - $e: yyyy-mm end of month (last day)
     - $query: A search query (may contain wildcards or negations):
@@ -57,6 +60,13 @@ Parameters:
     - $to: Optional To: address
     - $subject: Optional Subject: line
     - $body: Optional body text
+    - $since: number of seconds since the epoch, defaults to now. 
+       Returns '{"changed":false}' if no emails are later than epoch, otherwise proceeds with normal search
+    - $dfrom: days ago to start
+    - $dto: total days to match
+
+Options:
+
     - quick: send statistics only (exclude participants, threadstruct, word-cloud, emails apart from epoch)
     - emailsOnly: return email summaries only (omit thread_struct, top 10 participants and word-cloud)
     
@@ -94,7 +104,35 @@ Response example:
     "name": "dev",
     "cloud": {...},
     "hits": 25,
-    "thread_struct": {...},
+    thread_struct":
+    {
+        "nest": 2,
+        "children": {
+            {
+                "children": {
+                    {
+                        "children": {
+                            {
+                                "children": { },
+                                epoch: ...,
+                                tid: ...,
+                                nest: 1
+                            }
+                        },
+                        epoch: ...,
+                        tid: ...,
+                        nest: 2
+                    }
+                },
+                "epoch": 1474883100,
+                "tid": "b1d6446f5cc8f4846454cbabc48ddb08afbb601a77169f8e32e34102@<dev.ponymail.apache.org>",
+                "nest": 2
+            }
+        },
+        epoch: ...,
+        tid: ...,
+        body: ...
+    },
     "max": 5000,
     "searchlist": "<dev.ponymail.info>",
     "list": "dev@ponymail.info",
@@ -167,9 +205,10 @@ Response example:
 
 ### Fetching notifications for a logged in user
 Usage:
-`GET /api/notifications.lua`
+`GET /api/notifications.lua[?seen=$mid]`
 
-Parameters: `None` (cookie required)
+Parameters: (cookie required)
+  - $mid: id of the message to be marked as having been seen
 
 
 Response example:
@@ -178,6 +217,8 @@ Response example:
 {
     "notifications": {...}
 }
+or
+{"marked": true}
 ~~~
 
 ### Fetching a month's data as an mbox file
@@ -190,3 +231,21 @@ Response example:
 TBA
 ~~~
 
+### Get ATOM data for list or email
+
+Usage:
+`GET /api/atom/lua(?list=$lid|?mid=$mid)`
+
+Parameters: (cookie may be required)
+  - $lid: the list id, e.g. dev@ponymail.apache.org
+  - $mid: The email ID (Permalink)
+
+One of the above is required.
+In the case of the list id, data is returned for the last month.
+For email ID, the thread is returned.
+
+Response example:
+
+~~~
+TBA
+~~~
