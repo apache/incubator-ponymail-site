@@ -47,8 +47,9 @@ for detailed package installation instructions:</p>
 <h2 id='prerequisites'>Pre-requisites<a href='#prerequisites' style='color: rgba(0,0,0,0);'>&para;</a></h2>
 <p>You will need the following software installed on your machine:</p>
 <ul>
-<li>ElasticSearch &gt;= 2.1</li>
+<li>ElasticSearch &gt;= 2.1 and &lt; 6.0 (setup.py does not support 6.x+; the code may perhaps run on 6.x)</li>
 <li>Python 3.x for the archiver plugin (setup.py will handle dependencies) and importer</li>
+<li>Python <code>html2text</code> package (GPLv3) if you wish to archive HTML-only mails (remember to add the <code>--html2text</code> command line arg)</li>
 <li>Apache HTTP Server 2.4.x with mod_lua (see http://modlua.org/gs/installing if you need to build mod_lua manually)</li>
 <li>Lua &gt;=5.1 with the following modules: cjson, luasec, luasocket
   (Note: Lua 5.3 is not currently supported by httpd mod_lua or luasocket)</li>
@@ -205,7 +206,14 @@ You may use the following variables in the footer:</p>
 <p>By default, headers such as to/cc are not shown in the normal email view.
 To enable these headers, set <code>full_headers</code> to <code>true</code> in the <code>site/api/lib/config.lua</code> file.</p>
 <h3 id='lastlyanoteaboutmessageidmidgenerators'>Lastly, a note about Message-ID (MID) generators<a href='#lastlyanoteaboutmessageidmidgenerators' style='color: rgba(0,0,0,0);'>&para;</a></h3>
-<p>Please see <a href="archiving.html#usingtherightidgenerator">this paragraph</a> about document ID generators.</p>
+<p>The default MID generator is called 'medium' and digests the message
+body, timestamp and list-ID to generate the MID. There is also a 'short'
+that only digests the body, and a 'full' that uses the entire message as
+a bytestring to generate an ID. Medium is recommended for most setups
+(especially clustered setups), while full can be used for single-machine
+setups.
+N.B. At present, all the generators have issues, see (#176 #177 #178)
+Please see <a href="archiving.html#usingtherightidgenerator">this paragraph</a> about document ID generators.</p>
 <div style="display: inline-block; background: #BBB; margin: -10px; padding: 10px;">
     <h4><a id="disclaimer"></a>Disclaimer</h4>
 <div style="width: 65%; float: left;">

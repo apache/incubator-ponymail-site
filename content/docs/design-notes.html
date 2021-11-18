@@ -1,0 +1,118 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Apache Pony Mail (Incubating)</title>
+<link rel="stylesheet" type="text/css" href="/css/default.css"/>
+<link rel="stylesheet" type="text/css" href="/css/fa/fa.css"/>
+<link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="manifest" href="/icons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+</head><body>
+<div id="titlebar">
+    <a href="/contribute.html"><img align='left' style="width: 130px; height: 125px; position: relative; left: -6px; top: -6px; border: 0;" src="/images/devme.png" alt="Fork/Hack on Pony Mail"></a>
+    <a href='/'><img src="/images/ponymail.svg" style="width: 110px; margin-left: -10px; margin-right: 20px; height: auto;" align="left"/></a>
+    <h1><a id="title" href="/" style="color: #FFF !important;">Apache Pony Mail&trade; (Incubating)</a></h1>
+    <div id="menubar">
+        <ul>
+            <li><a href="/docs.html"><i class="fa fa-book"></i><span>Documentation</span></a></li>
+            <li><a href="/source.html"><i class="fa fa-git-square"></i><span>Source</span></a></li>
+            <li><a href="/downloads.html"><i class="fa fa-cloud-download"></i><span>Download</span></a></li>
+            <li><a href="/support.html"><i class="fa fa-question-circle"></i><span>Get support</span></a></li>
+            <li><a href="/contribute.html"><i class="fa fa-share-alt"></i><span>Contribute</span></a></li>
+            <li><a href="/about.html"><i class="fa fa-users"></i><span>About</span></a></li>
+        </ul>
+    </div>
+</div>
+<h1 id='designnotes'>Design Notes<a href='#designnotes' style='color: rgba(0,0,0,0);'>&para;</a></h1>
+<p>This file is an attempt to summarise some of the design issues.</p>
+<h2 id='database'>Database<a href='#database' style='color: rgba(0,0,0,0);'>&para;</a></h2>
+<p>The project uses the ElasticSearch (ES) database to store the mails as individual documents.
+The database stores each mail to each list as a separate document.
+If the same mail was sent to multiple lists, then it exists as multiple documents in the database.</p>
+<p>ES requires that each distinct document has a unique id (MID).
+The MID is used to insert the document in the database, and can be used to fetch it.</p>
+<h3 id='databasedesign'>Database design<a href='#databasedesign' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>The mails are stored in two separate ES indexes:
+<em> "mbox" - this stores information about the document, plus the parsed content, and is used for searching and summary displays.
+</em> "mbox_source" - this is used to store the raw content of the document.
+The two versions of the document are linked by using the same MID.</p>
+<h3 id='requirementsforthemid'>Requirements for the MID<a href='#requirementsforthemid' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>As mentioned above, each different document must have a unique id (MID).
+This document may arrive as a single mail message, or be loaded from a collection such as an mbox file.</p>
+<p>Duplicate database entries can be avoided by ensuring that the same MID is calculated regardless of the input source.
+[If the same message is processed more than once, it then does not matter as only the last instance will be stored.]
+The MID format does not have to be transparent; it can be an opaque hash.</p>
+<h3 id='generationofthemid'>Generation of the MID<a href='#generationofthemid' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>The same message may be sent to multiple lists, so the message data alone is not sufficient to identify it uniquely.
+The same message may potentially be sent more than once to the same list,
+so the combination of message and listname is also not sufficient to identify a message.</p>
+<p>Many messages will have a Message-Id header which is intended to be unique to the message.
+However this may not be the case, and some messages do not have one.</p>
+<p>Many mailing list servers will allocate a squence number or other such id to each message they send.
+This should be unique for the list, assuming that sequence is not reset.</p>
+<p>Where the Message-Id and List Server Id both exist, they can be combined to generate a MID.
+[If the List Server Id is known to be unique, then that can potentially be used alone.] </p>
+<p>Where one or other id does not exist, then alternative means need to be used to generate the MID.
+The data used to do so must be present it all supported message sources.</p>
+<p>Algorithms for the generator remain TBA</p>
+<h3 id='permalinkrequirements'>Permalink requirements<a href='#permalinkrequirements' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>The application provides Permalinks which can later be used to refer to any document in the database.
+Once published, it is important that such links must continue to work.</p>
+<p>Links should be portable; i.e. if the raw messages are loaded into a new archive it should be possible
+to support existing published Permalinks.</p>
+<p>Multiple links may refer to the same document, however each link should refer to a single document.
+Ideally the Permalink should be relatively short; however that may conflict with the uniqueness requirement.</p>
+<p>It may be useful for the Permalink format to be relatively transparent.
+For example, a current ASF mod_mbox link looks like:</p>
+<p>http://mail-archives.apache.org/mod_mbox/ponymail-commits/201605.mbox/<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#49;&#102;&#55;&#51;&#98;&#52;&#101;&#48;&#102;&#99;&#49;&#97;&#52;&#102;&#98;&#98;&#98;&#102;&#101;&#52;&#100;&#49;&#53;&#53;&#50;&#57;&#51;&#99;&#50;&#102;&#49;&#97;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#49;&#102;&#55;&#51;&#98;&#52;&#101;&#48;&#102;&#99;&#49;&#97;&#52;&#102;&#98;&#98;&#98;&#102;&#101;&#52;&#100;&#49;&#53;&#53;&#50;&#57;&#51;&#99;&#50;&#102;&#49;&#97;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a></p>
+<p>This includes a reference to the:
+- mailing list name (ponymail-commits)
+- month when mail was sent (201605.mbox)
+- the Message-Id (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#49;&#102;&#55;&#51;&#98;&#52;&#101;&#48;&#102;&#99;&#49;&#97;&#52;&#102;&#98;&#98;&#98;&#102;&#101;&#52;&#100;&#49;&#53;&#53;&#50;&#57;&#51;&#99;&#50;&#102;&#49;&#97;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;">&#49;&#102;&#55;&#51;&#98;&#52;&#101;&#48;&#102;&#99;&#49;&#97;&#52;&#102;&#98;&#98;&#98;&#102;&#101;&#52;&#100;&#49;&#53;&#53;&#50;&#57;&#51;&#99;&#50;&#102;&#49;&#97;&#64;&#103;&#105;&#116;&#46;&#97;&#112;&#97;&#99;&#104;&#101;&#46;&#111;&#114;&#103;</a>)</p>
+<p>This information should be sufficient to find the message in just about any mail-archive.</p>
+<p>Whereas vendor-specific links may be much shorter, but are only valid for the particular service.
+For example the equivalent Markmail link is:
+http://markmail.org/message/oanktcpxlxkmyora</p>
+<p>There may be use cases for both styles of link.</p>
+<h3 id='permalinkdesign'>Permalink design<a href='#permalinkdesign' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>TBA</p>
+<div style="display: inline-block; background: #BBB; margin: -10px; padding: 10px;">
+    <h4><a id="disclaimer"></a>Disclaimer</h4>
+<div style="width: 65%; float: left;">
+<p style="line-height: 12pt;">
+    Apache Pony Mail (Incubating) is an effort undergoing incubation at
+    The Apache Software Foundation (ASF), sponsored by the <a href="https://incubator.apache.org">
+    Apache Incubator</a>. Incubation is required of all newly accepted projects
+    until a further review indicates that the infrastructure,
+    communications, and decision making process have stabilized in a
+    manner consistent with other successful ASF projects. While
+    incubation status is not necessarily a reflection of the
+    completeness or stability of the code, it does indicate that the
+    project has yet to be fully endorsed by the ASF.
+</p>
+</div>
+<div style="width: 20%; float: left; padding-top: 16px; margin-left: -8px;">
+<a href="https://incubator.apache.org"><img src="https://incubator.apache.org/images/incubator_feather_egg_logo_sm.png"/></a>
+</div>
+<div style="width: 15%; float: left; line-height: 15px; padding-left: 22px;">
+    <a class="item" target="_blank" href="https://incubator.apache.org/">Apache Incubator</a><br/>
+            <a class="item" target="_blank" href="https://www.apache.org/">About the ASF<span></span></a><br/>
+            <a class="item" target="_blank" href="https://www.apache.org/foundation/policies/conduct.html">Code of Conduct<span></span></a><br/>
+            <a class="item" target="_blank" href="https://www.apache.org/foundation/thanks.html">Thanks<span></span></a><br/>
+            <a class="item" target="_blank" href="https://www.apache.org/foundation/sponsorship.html">Become a Sponsor<span></span></a><br/>
+            <a class="item" target="_blank" href="https://www.apache.org/security/">Security<span></span></a><br/>
+            <a class="item" target="_blank" href="https://www.apache.org/licenses/LICENSE-2.0">License<span></span></a><br/>
+</div>
+</div>
+</body></html>

@@ -64,16 +64,19 @@
     "tid": "06b318af97ca96c115e878c14d0814a53407751c31388410421c1751@1441467256@<dev.any23.apache.org>",
     "list_raw": "<dev.any23.apache.org>"
 }
+
+Note: date and epoch are in UTC
+
 </pre>
 
 <h3 id='fetchinglistdata'>Fetching list data<a href='#fetchinglistdata' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Usage:
-<code>GET /api/stats.lua?list=$list&amp;domain=$domain[&amp;d=$timespan][&amp;q=$query][&amp;header_from=$from][&amp;header_to=$to][&amp;header_subject=$subject][&amp;header_body=$body][&amp;quick][&amp;emailsOnly][&amp;s=$s&amp;e=$e]</code></p>
+<code>GET /api/stats.lua?list=$list&amp;domain=$domain[&amp;d=$timespan][&amp;q=$query][&amp;header_from=$from][&amp;header_to=$to][&amp;header_subject=$subject][&amp;header_body=$body][&amp;quick][&amp;emailsOnly][&amp;s=$s&amp;e=$e][&amp;since=$since][&amp;dfrom=$dfrom&amp;dto=$dto]</code></p>
 <p>See below for details of <a href="#Timespans">timespan</a> values</p>
 <p>Parameters:</p>
 <pre><code>- $list: The list prefix (e.g. `dev`). Wildcards may be used
 - $domain: The list domain (e.g. `httpd.apache.org`). Wildcards may be used
-- $timespan: A timespan value (see below)
+- $timespan: A [timespan](#Timespans) value
 - $s: yyyy-mm start of month (day 1)
 - $e: yyyy-mm end of month (last day)
 - $query: A search query (may contain wildcards or negations):
@@ -84,7 +87,13 @@
 - $to: Optional To: address
 - $subject: Optional Subject: line
 - $body: Optional body text
-- quick: send statistics only (exclude participants, threadstruct, word-cloud, emails apart from epoch)
+- $since: number of seconds since the epoch, defaults to now. 
+   Returns '{"changed":false}' if no emails are later than epoch, otherwise proceeds with normal search
+- $dfrom: days ago to start
+- $dto: total days to match
+</code></pre>
+<p>Options:</p>
+<pre><code>- quick: send statistics only (exclude participants, threadstruct, word-cloud, emails apart from epoch)
 - emailsOnly: return email summaries only (omit thread_struct, top 10 participants and word-cloud)
 </code></pre>
 <p>Response example:</p>
@@ -120,7 +129,35 @@
     "name": "dev",
     "cloud": {...},
     "hits": 25,
-    "thread_struct": {...},
+    thread_struct":
+    {
+        "nest": 2,
+        "children": {
+            {
+                "children": {
+                    {
+                        "children": {
+                            {
+                                "children": { },
+                                epoch: ...,
+                                tid: ...,
+                                nest: 1
+                            }
+                        },
+                        epoch: ...,
+                        tid: ...,
+                        nest: 2
+                    }
+                },
+                "epoch": 1474883100,
+                "tid": "b1d6446f5cc8f4846454cbabc48ddb08afbb601a77169f8e32e34102@<dev.ponymail.apache.org>",
+                "nest": 2
+            }
+        },
+        epoch: ...,
+        tid: ...,
+        body: ...
+    },
     "max": 5000,
     "searchlist": "<dev.ponymail.info>",
     "list": "dev@ponymail.info",
@@ -186,18 +223,35 @@
 
 <h3 id='fetchingnotificationsforaloggedinuser'>Fetching notifications for a logged in user<a href='#fetchingnotificationsforaloggedinuser' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Usage:
-<code>GET /api/notifications.lua</code></p>
-<p>Parameters: <code>None</code> (cookie required)</p>
+<code>GET /api/notifications.lua[?seen=$mid]</code></p>
+<p>Parameters: (cookie required)
+  - $mid: id of the message to be marked as having been seen</p>
 <p>Response example:</p>
 <pre>
 {
     "notifications": {...}
 }
+or
+{"marked": true}
 </pre>
 
 <h3 id='fetchingamonthsdataasanmboxfile'>Fetching a month's data as an mbox file<a href='#fetchingamonthsdataasanmboxfile' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Usage:
 <code>GET /api/mbox.lua?list=issues@ponymail.apache.org&amp;date=2016-06</code></p>
+<p>Response example:</p>
+<pre>
+TBA
+</pre>
+
+<h3 id='getatomdataforlistoremail'>Get ATOM data for list or email<a href='#getatomdataforlistoremail' style='color: rgba(0,0,0,0);'>&para;</a></h3>
+<p>Usage:
+<code>GET /api/atom/lua(?list=$lid|?mid=$mid)</code></p>
+<p>Parameters: (cookie may be required)
+  - $lid: the list id, e.g. dev@ponymail.apache.org
+  - $mid: The email ID (Permalink)</p>
+<p>One of the above is required.
+In the case of the list id, data is returned for the last month.
+For email ID, the thread is returned.</p>
 <p>Response example:</p>
 <pre>
 TBA
