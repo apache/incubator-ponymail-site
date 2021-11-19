@@ -60,13 +60,13 @@ Parameters:
     - $to: Optional To: address
     - $subject: Optional Subject: line
     - $body: Optional body text
-    - $since: number of seconds since the epoch, defaults to now. 
-       Returns '{"changed":false}' if no emails are later than epoch, otherwise proceeds with normal search
     - $dfrom: days ago to start
     - $dto: total days to match
 
 Options:
 
+    - $since: number of seconds since the epoch, defaults to now. 
+       Returns '{"changed":false}' if no emails are later than epoch, otherwise proceeds with normal search
     - quick: send statistics only (exclude participants, threadstruct, word-cloud, emails apart from epoch)
     - emailsOnly: return email summaries only (omit thread_struct, top 10 participants and word-cloud)
     
