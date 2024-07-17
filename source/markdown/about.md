@@ -58,7 +58,6 @@ into our projects.
 We're a small bunch of people committed to making mailing list interaction as easy as possible.
 Currently, we consist of (in alphabetical order):
 
- - Andrew Bayer / abayer - mentor
  - Daniel Gruno / humbedooh - committer
  - Francesco Chicchiriccò / ilgrosso - committer
  - Jim Jagielski / jimjag - committer
