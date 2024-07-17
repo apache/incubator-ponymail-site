@@ -11,17 +11,6 @@ and undergoing Incubation at the Apache Software Foundation (ASF).
 ### Sample Screenshot ###
 ![Ponies](images/demo.png)
 
-### Pony Mail includes rich visualizations ###
-
-![Trends](images/demo_trends.png)
-
-### You can also run simple n-gram analyses of list content ###
-
-![N-grams](images/demo_ngrams.png)
-
-See [https://lists.apache.org](https://lists.apache.org) for a live demo;
-Pony Mail is currently running on the full mail archives of all Apache projects.
-
 Pony Mail works in both public, private and mixed-mode, allowing you
 to have one unified place for all your communication, both public and
 private.
@@ -44,7 +33,6 @@ private.
 * Supports both custom OAuth, Google Auth and more.
 * Atom feeds for all lists (including private ones!)
 * Source view and custom range mbox export
-* Customized trend analysis and n-grams
 
 
 ### Requirements: ###
