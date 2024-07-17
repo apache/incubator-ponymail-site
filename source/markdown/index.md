@@ -19,7 +19,7 @@ and undergoing Incubation at the Apache Software Foundation (ASF).
 
 ![N-grams](images/demo_ngrams.png)
 
-See [https://lists.apache.org.org](https://lists.apache.org) for a live demo;
+See [https://lists.apache.org](https://lists.apache.org) for a live demo;
 Pony Mail is currently running on the full mail archives of all Apache projects.
 
 Pony Mail works in both public, private and mixed-mode, allowing you
@@ -49,7 +49,7 @@ private.
 
 ### Requirements: ###
 
-* Linux operating system (tested on Ubuntu, Debian, Fedora and CentOS - Windows or OS/X may work)
+* Linux operating system (tested on Ubuntu, Debian, Fedora and CentOS - Windows or macOS may work)
 * ElasticSearch backend
 * Apache HTTP Server frontend with mod_lua loaded OR
     * Nginx with nginx-extras (ng-lua module) AND lua-apr installed
