@@ -56,30 +56,23 @@ private.</p>
 <li>In-browser reply to mailing lists</li>
 <li>Fast and intuitive searching</li>
 <li>Threaded, flat and tree view modes</li>
-<li>Notifications of replies to emails sent via Pony Mail</li>
-<li>Email and list statistics</li>
 <li>Multi-site, multi-list handling</li>
 <li>Word clouds</li>
 <li>Fuzzy-logic email grouping/threading (based in part on JWZ's ideas)</li>
 <li>Supports both custom OAuth, Google Auth and more.</li>
-<li>Atom feeds for all lists (including private ones!)</li>
 <li>Source view and custom range mbox export</li>
 </ul>
 <h3 id='requirements'>Requirements:<a href='#requirements' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <ul>
 <li>Linux operating system (tested on Ubuntu, Debian, Fedora and CentOS - Windows or macOS may work)</li>
 <li>ElasticSearch backend</li>
-<li>Apache HTTP Server frontend with mod_lua loaded OR<ul>
-<li>Nginx with nginx-extras (ng-lua module) AND lua-apr installed</li>
-</ul>
-</li>
-<li>Python 3.x for importing (with elasticsearch and formatflowed via pip)</li>
+<li>Apache HTTP Server frontend (probably also supports nginx)</li>
+<li>Python 3.8+</li>
 <li>A mailing list system:<ul>
 <li>MailMan3 if you fancy that (we have a python3 archive plugin)</li>
 <li>OR any mailing list system of your choice (use archiver plugin with stdin)</li>
 </ul>
 </li>
-<li>Lua &gt;=5.1 + lua-cjson, luasec and luasocket</li>
 </ul>
 <h3 id='developmentbenchmarking'>Development Benchmarking<a href='#developmentbenchmarking' style='color: rgba(0,0,0,0);'>&para;</a></h3>
 <p>Pony Mail has been built for and tested with the mail archives of the Apache
