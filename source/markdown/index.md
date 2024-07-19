@@ -25,13 +25,10 @@ private.
 * In-browser reply to mailing lists
 * Fast and intuitive searching
 * Threaded, flat and tree view modes
-* Notifications of replies to emails sent via Pony Mail
-* Email and list statistics
 * Multi-site, multi-list handling
 * Word clouds
 * Fuzzy-logic email grouping/threading (based in part on JWZ's ideas)
 * Supports both custom OAuth, Google Auth and more.
-* Atom feeds for all lists (including private ones!)
 * Source view and custom range mbox export
 
 
@@ -39,13 +36,11 @@ private.
 
 * Linux operating system (tested on Ubuntu, Debian, Fedora and CentOS - Windows or macOS may work)
 * ElasticSearch backend
-* Apache HTTP Server frontend with mod_lua loaded OR
-    * Nginx with nginx-extras (ng-lua module) AND lua-apr installed
-* Python 3.x for importing (with elasticsearch and formatflowed via pip)
+* Apache HTTP Server frontend (probably also supports nginx)
+* Python 3.8+
 * A mailing list system:
     * MailMan3 if you fancy that (we have a python3 archive plugin)
     * OR any mailing list system of your choice (use archiver plugin with stdin)
-* Lua >=5.1 + lua-cjson, luasec and luasocket
 
 
 
