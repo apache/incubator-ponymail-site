@@ -1,4 +1,4 @@
-Apache Pony Mail (Incubating) is a web-based mail archive browser
+Apache Pony Mail is a web-based mail archive browser
 built to scale to millions of archived messages with hundreds of requests
 per second.  It allows you to browse, search, and interact with mailing lists
 including creating replies to mailing list threads.

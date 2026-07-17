@@ -1,4 +1,4 @@
-# Building (and releasing) Apache Pony Mail (Incubating)
+# Building (and releasing) Apache Pony Mail
 
 Release managers wanting to initiate a release of Pony Mail should follow these steps:
 

@@ -2,7 +2,7 @@
 
 ### Pony Mail - Mail Archiving, Ponified!
 
-Apache Pony Mail (Incubating) is a new web-based mailing list archive with 
+Apache Pony Mail is a new web-based mailing list archive with 
 both strong searching and browsing features, and includes the ability to 
 reply within a thread from your web browser.  It is currently deployed 
 to provide an archive for all Apache Software Foundation mailing lists.

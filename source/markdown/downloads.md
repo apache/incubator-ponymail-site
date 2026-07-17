@@ -1,4 +1,4 @@
-# Download Apache Pony Mail (Incubating)
+# Download Apache Pony Mail
 
 Be sure to [verify your downloads](https://www.apache.org/info/verification) using the folowing [KEYS](https://downloads.apache.org/incubator/ponymail/KEYS).
 
