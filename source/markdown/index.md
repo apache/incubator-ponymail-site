@@ -5,8 +5,7 @@ including creating replies to mailing list threads.
 
 Apache Pony Mail uses OAuth2 (Google, GitHub,
 Facebook etc) for authentication to allow viewing private lists, and uses
-ElasticSearch for storage and searching.  Licensed under the Apache License 2.0
-and undergoing Incubation at the Apache Software Foundation (ASF).
+ElasticSearch for storage and searching.  Licensed under the Apache License 2.0.
 
 ### Sample Screenshot ###
 ![Ponies](images/demo.png)

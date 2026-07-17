@@ -17,14 +17,14 @@ and pull requests are welcome.
 ## Mailing lists ##
 
 Developers list:
- - list: dev@ponymail.incubator.apache.org
- - subscribe addr: dev-subscribe@ponymail.incubator.apache.org
- - Online version: http://lists.apache.org/list.html?dev@ponymail.incubator.apache.org
+ - list: dev@ponymail.apache.org
+ - subscribe addr: dev-subscribe@ponymail.apache.org
+ - Online version: http://lists.apache.org/list.html?dev@ponymail.apache.org
     
 Issues list:
- - list: issues@ponymail.incubator.apache.org
- - subscribe addr: issues-subscribe@ponymail.incubator.apache.org
- - Online version: http://lists.apache.org/list.html?bugs@ponymail.incubator.apache.org
+ - list: issues@ponymail.apache.org
+ - subscribe addr: issues-subscribe@ponymail.apache.org
+ - Online version: http://lists.apache.org/list.html?bugs@ponymail.apache.org
 
 ## Chat ##
     
