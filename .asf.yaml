@@ -3,3 +3,8 @@ publish:
 
 staging:
   whoami: asf-site
+
+github:
+  description: "Apache Pony Mail"
+  features:
+    issues: true
