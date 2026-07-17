@@ -1,10 +1,14 @@
 NOTE: This is now handled by GitHub, you only need to change the markdown
-      files and the GitHub Action will regenerate the site and publish it.
+      files (and possibly template.html) under the source/ directory.
+      The GitHub Action will regenerate the site and publish it under content/
       
 # Building the web site locally
 
 * Install the markdown module for Python 3: sudo pip3 install markdown
-* Edit or create the appropriate markdown file in source/ (you can have sub-dirs there)
-* open a shell, go to the source/ dir
+* Edit or create (or delete) the appropriate file in source/ (you can have sub-dirs there)
+* open a shell
+* remove all the html files under content: find content -type f -name '*.html' -delete
+(this ensures that deletions of files are picked up)
+* go to the source/ dir
 * Run: python3 generate.py
 * Commit the changes to git :)
