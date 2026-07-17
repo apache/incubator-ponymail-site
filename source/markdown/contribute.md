@@ -10,6 +10,9 @@ Our source repository is at: [https://github.com/apache/incubator-ponymail-foal]
 
 We currently use GitHub Issues for tracking bugs and improvements: [https://github.com/apache/incubator-ponymail-foal/issues](https://github.com/apache/incubator-ponymail-foal/issues)
 
+For issues with the website, please use
+https://github.com/apache/incubator-ponymail-site/issues](https://github.com/apache/incubator-ponymail-site/issues)
+
 ## Contributing guideline ##
 
 To contribute to Pony Mail, follow these steps:
